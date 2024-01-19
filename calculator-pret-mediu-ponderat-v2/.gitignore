@@ -1,0 +1,22 @@
+# Recommendation from 
+# https://forum.uipath.com/t/is-there-a-suggested-gitignore-to-use-with-uipath-studio/182482/11
+.settings/
+.local/
+.tmh
+.objects/
+
+# Custom
+debug*.log
+.screenshots/
+input/
+output/
+GPUCache/
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini

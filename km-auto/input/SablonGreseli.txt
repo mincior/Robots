@@ -1,0 +1,18 @@
+Buna ziua dl $Utilizator. 
+
+	Incepand cu luna septembrie, 2022 compartimentul IT, la solicitarea compartimentului Auto din cadrul firmei Consolight SRL a dezvoltat o aplicatie (numita KmAuto) pentru gestionarea utilizarii masinilor firmei in timpul week-endurilor, mai precis pentru punerea la plata a utilizatorilor de masini care folosesc autovehicolul in interes personal depasind limita de km gratuiti aprobata. 
+	Va reamintim ca aveti obligatia sa faceti o poza in bord la sosirea acasa (de obicei in ziua de vineri dupa program) careia sa-i puneti status-ul 'Referinta' si o poza la plecarea de acasa (de obicei luni dimineata) cu status-ul corespunzator utilizarii masinii (Vezi nota), chiar daca nu ati folosit masina in timpul weekendului (pentru a demonstra ca este asa).
+	
+$Continut
+	
+$Sfarsit continut
+
+	Va rugam sa respectati cerintele acestei aplicatii 
+
+
+Nota: Complatarea status-ului corespunzator utilizarii masinii:
+	'Normal' daca ati folosit-o in interes personal, 
+	'Interes de serviciu' daca v-ati deplasat in interesul firmei, 
+	'Concediu' daca ati pus combustibil in rezervor pe cheltuiala proprie si 
+	'Normal' daca ati fost in concediu dar combustibilul a fost platit din banii firmei
+

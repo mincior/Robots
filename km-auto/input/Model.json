@@ -1,0 +1,222 @@
+{
+    "formId": "1viUebiIcbC9I0g-6km7lbKG6QNr0Nf1MCV9nzYJnl-E",
+    "info": {
+        "title": "Bucuresti Km Auto Vanzari",
+        "documentTitle": "Copy of Bucuresti Km Auto Vanzari"
+    },
+    "settings": {
+        "quizSettings": {}
+    },
+    "revisionId": "00000014",
+    "responderUri": "https://docs.google.com/forms/d/e/1FAIpQLSet7OwTiGdBvvO-hG6homF3HCz-7AtbSTdRnp_tn24Vmu1ewQ/viewform",
+    "items": [
+        {
+            "itemId": "678dc65d",
+            "title": "Masina",
+            "description": "Adauga o masina din parcul Consolight",
+            "questionItem": {
+                "question": {
+                    "questionId": "58ee36b2",
+                    "required": true,
+                    "choiceQuestion": {
+                        "type": "DROP_DOWN",
+                        "options": [
+                            {
+                                "value": "B-218-CLT"
+                            },
+                            {
+                                "value": "B-211-CLT"
+                            },
+                            {
+                                "value": "B-145-CLT"
+                            },
+                            {
+                                "value": "B-122-CLT"
+                            },
+                            {
+                                "value": "B-201-CLT"
+                            },
+                            {
+                                "value": "B-138-CLT"
+                            },
+                            {
+                                "value": "B-224-CLT"
+                            },
+                            {
+                                "value": "B-225-CLT"
+                            },
+                            {
+                                "value": "B-141-CLT"
+                            },
+                            {
+                                "value": "B-905-CLT"
+                            },
+                            {
+                                "value": "B-988-CNS"
+                            },
+                            {
+                                "value": "B-226-CLT"
+                            },
+                            {
+                                "value": "B-165-CLT"
+                            },
+                            {
+                                "value": "B-209-CLT"
+                            },
+                            {
+                                "value": "B-888-CSN"
+                            },
+                            {
+                                "value": "B-803-CLT"
+                            },
+                            {
+                                "value": "B-213-CLT"
+                            },
+                            {
+                                "value": "B-186-CLT"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "16594970",
+            "title": "Utilizator",
+            "questionItem": {
+                "question": {
+                    "questionId": "246cd67d",
+                    "choiceQuestion": {
+                        "type": "DROP_DOWN",
+                        "options": [
+                            {
+                                "value": "Sorin Ungureanu"
+                            },
+                            {
+                                "value": "Buciumeanu Daniel"
+                            },
+                            {
+                                "value": "Catalin Velcescu"
+                            },
+                            {
+                                "value": "Valentin Baja"
+                            },
+                            {
+                                "value": "Panait Valeriu"
+                            },
+                            {
+                                "value": "Stefanescu Catalin"
+                            },
+                            {
+                                "value": "Bogdan Gheorghe"
+                            },
+                            {
+                                "value": "Catalin Bursuc"
+                            },
+                            {
+                                "value": "KPO Computers SRL"
+                            },
+                            {
+                                "value": "Florin Costescu"
+                            },
+                            {
+                                "value": "Pana Ion"
+                            },
+                            {
+                                "value": "Alexandru Streza"
+                            },
+                            {
+                                "value": "Bogdan Butufei"
+                            },
+                            {
+                                "value": "Flavius Oltean"
+                            },
+                            {
+                                "value": "Apostol Cristian"
+                            },
+                            {
+                                "value": "Cucu Octavian"
+                            },
+                            {
+                                "value": "Iliescu Valentin"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "4462879e",
+            "title": "KM",
+            "description": "Adauga indexul kilometrajului din bord",
+            "questionItem": {
+                "question": {
+                    "questionId": "2efe848e",
+                    "required": true,
+                    "textQuestion": {}
+                }
+            }
+        },
+        {
+            "itemId": "50cd9b80",
+            "title": "STATUS",
+            "description": "Vineri la plecarea de la serviciu si cand plecati in concediu, puneti 'Referinta'. Acest index reprezinta baza de calcul pentru tot week-endul. El se va scadea din indexele introduse mai tarziu.  \n\nCand folositi masina in interes personal, la intoarcerea din cursa puneti 'Normal'.\nCand folositi masina pentru serviciu in timpul weekend-ului, puneti 'Interes serviciu'.\nCand sunteti in concediu si ati umplut rezervorul pe cheltuiala proprie, la intoarcere puneti 'Concediu' si daca nu, puneti 'Normal'. \n\nNumai kilometrii care au ca status 'Normal' vor fi pusi la plata.\nAtentie. Pozele bordului se fac vineri la plecarea de la serviciu si luni cand se ajunge la serviciu.\nIntroduceti kilometrii din concediu in prima vineri de dupa concediu.",
+            "questionItem": {
+                "question": {
+                    "questionId": "51f34d99",
+                    "required": true,
+                    "choiceQuestion": {
+                        "type": "DROP_DOWN",
+                        "options": [
+                            {
+                                "value": "Referinta"
+                            },
+                            {
+                                "value": "Normal"
+                            },
+                            {
+                                "value": "Concediu"
+                            },
+                            {
+                                "value": "Interes serviciu"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "4e37481a",
+            "title": "Poza din bord",
+            "questionItem": {
+                "question": {
+                    "questionId": "7773be2c",
+                    "required": true,
+                    "fileUploadQuestion": {
+                        "folderId": "1w1absWjVpX-x6AIGQ26sm9i8KUl_NL1zuvUcmnfeB2JX6P5MhAmERxL7QxO37zcNXrbrJ69Z",
+                        "types": [
+                            "ANY"
+                        ],
+                        "maxFiles": 1,
+                        "maxFileSize": "10485760"
+                    }
+                }
+            }
+        },
+        {
+            "itemId": "4355a369",
+            "title": "Data si ora citirii kilometrajului",
+            "description": "Completati data si ora numai daca ati facut poza in alta zi. Daca ati facut poza acum, apasati direct butonul 'Submit'. Atentie, ora 12:00AM este ora 0:00. Apasati butonelul calendar din dreapta datei pentru a alege data interactiv si tasta tab pentru a scrie minutele dupa ce ati scris ora.",
+            "questionItem": {
+                "question": {
+                    "questionId": "7b3af625",
+                    "dateQuestion": {
+                        "includeTime": true,
+                        "includeYear": true
+                    }
+                }
+            }
+        }
+    ],
+    "linkedSheetId": "1egXK7nDwsqRfJnvSFmE8Eb68LqFUlDbglfZQrbj30OM"
+}

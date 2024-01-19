@@ -1,0 +1,13 @@
+SELECT DISTINCT TOP (100) PERCENT Masini_2.Id, dbo.Utilizatori.Nume
+FROM            dbo.KmLog INNER JOIN
+                         dbo.Utilizatori ON dbo.KmLog.UtilizatorId = dbo.Utilizatori.Id INNER JOIN
+                         dbo.Masini AS Masini_2 ON dbo.KmLog.MasinaId = Masini_2.Id
+WHERE        (dbo.KmLog.MasinaId IN
+                             (SELECT        MasinaId
+                               FROM            (SELECT        KmLog_1.MasinaId, COUNT(DISTINCT KmLog_1.UtilizatorId) AS NumarUtilizatori, Masini_1.Numar
+                                                         FROM            dbo.KmLog AS KmLog_1 INNER JOIN
+                                                                                   dbo.Masini AS Masini_1 ON KmLog_1.MasinaId = Masini_1.Id
+                                                         WHERE        (KmLog_1.Data > '2022-08-01 00:00:00')
+                                                         GROUP BY KmLog_1.MasinaId, Masini_1.Numar
+                                                         HAVING         (COUNT(DISTINCT KmLog_1.UtilizatorId) >= 1)) AS derivedtbl_1))
+ORDER BY Masini_2.Id

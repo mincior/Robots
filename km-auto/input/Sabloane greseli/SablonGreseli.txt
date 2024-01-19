@@ -1,0 +1,33 @@
+Buna ziua d-le(d-na) $Utilizator. 
+
+
+
+In urma analizei efectuate asupra datelor colectate pentru luna $Luna, s-au identificat ceva probleme referitoare la ce ati introdus dumneavoastra in aplicatie, dupa cum urmeaza:
+$Continut
+
+Dumneavoastra nu puteti corecta greselile deja facute, dar pe viitor va rugam sa le evitati, sa respectati cerintele acestei aplicatii.
+
+Va multumim.
+
+Cu respect, $Sender.
+
+Nota:
+Incepand cu luna septembrie, 2022 compartimentul IT, la solicitarea compartimentului Auto si cu aprobarea conducerii firmei, a dezvoltat aplicatia KmAuto pentru gestionarea utilizarii masinilor firmei in timpul week-endurilor, mai precis pentru punerea la plata a utilizatorilor de masini care folosesc autovehicolul in interes personal depasind limita de km gratuiti aprobata. 
+
+Va reamintim ca aveti obligatia sa faceti o poza in bord in ziua de vineri dupa program, la plecarea de la serviciu careia sa-i puneti status-ul 'Referinta' si o poza luni dimineata, cand ajungeti la serviciu cu status-ul corespunzator utilizarii masinii, chiar daca nu ati folosit masina in timpul weekendului.
+
+Completarea status-ului corespunzator utilizarii masinii (la intoarcerea din cursa):
+	'Normal' daca ati folosit-o in interes personal, 
+	'Interes de serviciu' daca v-ati deplasat in interesul firmei. 
+
+Pentru concediu, faceti poza in momentul plecarii si o introduceti in aplicatie cu status 'Plecare in concediu'. La intoarecere faceti poza si o introduceti cu status 'Sosire din concediu (card firma)' daca ati folosit combustibil de la firma sau 'Sosire din concediu (card personal)' daca ati alimentat pe cheltuiala proprie. 
+
+    Atentie, cand alimentati pe cheltuiala proprie, inainte de a pleca in concediu trebuie sa faceti plinul rezervorului cu cardul firmei, faceti poza si introduceti in aplicatie 'Plecare in concediu'. In timpul concediului alimentati ori de cate ori este necesar din banii dvs iar la intoarcerea din concediu trebuie sa faceti din nou plinul cu banii dumneavoastra, faceti poza bordului si introduceti in aplicatie cu status "Sosire din concediu (card personal)". In felul acesta ati folosit metoda 'plin la plin' si nu veti fi pus la plata in aplicatie.
+
+    Cand alimentati pe cheltuiala firmei (referitor tot la concediu) nu mai conteaza cat si cum faceti plinul (de pe cardul firmei), introduceti poza la plecare cu status 'Plecare in concediu' iar la intoarcere introduceti poza cu status 'Sosire din concediu (card firma)'.
+
+Referinta este primul index de kilometraj dintr-un interval (de obicei weekend, sau poate weekend cuplat cu sarbatori legale, zile libere) care constituie baza de plecare pentru calculele urmatoare. Trebuie, intotdeauna facuta o diferenta intre doua indexe de kilometraj pentru a afla cati km au fost parcursi. De obicei se introduce o singura data, la inceputul weekendului, vineri la plecarea de la serviciu.
+
+Important ! Pozele kilometrajului de vineri si luni se fac la pleacarea si sosirea la/de la serviciu.
+
+  

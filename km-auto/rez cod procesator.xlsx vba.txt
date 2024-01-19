@@ -1,0 +1,1103 @@
+Option Explicit
+Dim dictConfig As New scripting.Dictionary
+Const numeRobot As String = "KmAuto"
+Dim attach() As String
+Function FolderSize(strFolderName As String) As Long
+    Dim FSO As Object, fsoFolder As Object
+    
+    Set FSO = CreateObject("Scripting.FileSystemObject")
+    Set fsoFolder = FSO.GetFolder(strFolderName)
+
+    FolderSize = fsoFolder.Size
+
+    Set fsoFolder = Nothing
+    Set FSO = Nothing
+
+End Function
+Sub WaitSeconds(seconds As Long)
+Dim d As Date
+d = seconds / 86400
+Application.Wait (Now + d) 'wait 5 seconds from now
+End Sub
+Private Sub AflaIntervaleleDePlata(dataInceput As Date, dataSfarsit As Date, dictZileLibere As scripting.Dictionary, arrStart() As Date, arrStop() As Date)
+'afla intervalele de weekend plus sarbatori legale care vor conta la plata km parcursi in interes personal
+'se pleaca de la data de inceput care va fi intotdeauna prima zi a primului interval (cu tot cu sarbatori legale) si se itereaza toate zilele pana la data de sfarsit
+'de fiecare data cand se gaseste un inceput de interval se creaza o intrare in arrStart si una in arrStop. In arrStart se scrie data de inceput
+'iar la urmatoarele iteratii se va gasi si data de sfarsit a intervalului ce se va scrie in arrStop
+Dim cont As Long, k As Long, wd As Long
+cont = 1
+ReDim Preserve arrStart(cont)
+ReDim Preserve arrStop(cont) 'se creaza simultan doar pentru a fi siguri ca cele doua array-uri nu vor fi desperecheate, dar trebuie sa ne asiguram ca arrStop va fi completat cumva
+
+
+arrStart(cont) = dataInceput 'se scrie inceputul primului interval, deoarece se stie ca e valid si contine si sarbatorile legale
+'se merge pana la urmatoarea zi de luni
+k = 0
+d = dataInceput
+wd = Weekday(d, vbSunday)
+Do While wd <> 1 And k < 50
+    d = DateAdd("d", 1, d) 'adauga o zi
+    wd = Weekday(d, vbSunday)
+Loop
+
+'adauga la sfarsit zilele de sarbatoare
+k = 0
+Do While dictZileLibere.Exists(d) And k < 100
+    d = DateAdd("d", 1, d) 'adauga o zi
+    k = k + 1
+Loop
+arrStop(cont) = d 'si scriem si finalul primului interval
+
+d = DateAdd("d", 1, d) 'adauga o zi
+wd = Weekday(d, vbSunday)
+k = 0
+Do 'incepe o bucla intre data de sfarsit a primului interval si dataSfarsit
+    Do While wd <> 5 And k < 50 And d <= dataSfarsit 'cauta urmatoarea zi de vineri
+        d = DateAdd("d", 1, d) 'adauga o zi
+        wd = Weekday(d, vbSunday)
+        k = k + 1
+    Loop
+    
+    'adauga la inceput zilele de sarbatoare
+    k = 0
+    Do While dictZileLibere.Exists(d) And k < 100 And d >= dataInceput
+        d = DateAdd("d", -1, d) 'scade o zi
+    
+    Loop
+    'sunt pe inceputul unui interval
+    cont = cont + 1
+    ReDim Preserve arrStart(cont)
+    ReDim Preserve arrStop(cont) 'se creaza simultan doar pentru a fi siguri ca cele doua array-uri nu vor fi desperecheate, dar trebuie sa ne asiguram ca arrStop va fi completat cumva
+    arrStart(cont) = d
+    
+    'cauta sfarsitul intervalului
+    k = 0
+    d = DateAdd("d", 1, d) 'adauga o zi
+    wd = Weekday(d, vbSunday)
+    Do While wd <> 1 And k < 50 And d <= dataSfarsit 'cauta urmatoarea zi de luni
+        d = DateAdd("d", 1, d) 'adauga o zi
+        wd = Weekday(d, vbSunday)
+        k = k + 1
+    Loop
+    
+    'adauga la sfarsit zilele de sarbatoare
+    k = 0
+    Do While dictZileLibere.Exists(d) And k < 100 And d <= dataSfarsit
+        d = DateAdd("d", 1, d) 'adauga o zi
+    
+    Loop
+    'sunt pe sfarsitul unui interval
+    arrStop(cont) = d
+Loop While d = dataSfarsit
+
+End Sub
+
+
+Private Sub AflaDateleDeInceputSfarsitFinal(strDataRaportarii As String, ByRef strDataInceput As String, ByRef strDataSfarsit As String, ByRef strDataFinala As String, dictZileLibere As scripting.Dictionary)
+Dim d As Date, dd As Date, v() As String, wd As Long, k As Long, ziuaDelimitare As Long
+'Afla data de inceput a primului weekend (ziua de vineri) si data de sfarsit a ultimului weekend (ziua de luni) si le returneaza prin referinta
+'La data de inceput se adauga (in fata) zilele libere iar la data de sfarsit se adauga (la final) zilele libere
+'La data de final se adauga zilele pana la ziua de joi inclusiv, pentru ca cineva poate introduce indexe si in alte zile, ulterioare zilei de luni dar nu mai tarziu de ziua de joi inclusiv
+'Daca se gasesc inregistrari succesive intr-o alta zi decat intervalul convenit (sa zicem miercuri) cu kilometraj diferit, acestea se vor trata ca si cum ar apartine week-endului anterior introducerii
+'cu cerinta ca prima data (identificata prin timestamp) sa contina indexul mai mic. In felul acesta se pot introduce kilometrii si dupa ziua de luni.
+'Data finala este data pana la care se pot introduce indexe, dupa dataSfarsit (prima zi de joi dupa ziua de luni (data sfarsit)) pentru ultimul weekend
+
+'afla ziua de luni cea mai apropiata de data curenta
+k = 0
+v = Split(strDataRaportarii, "-")
+d = DateSerial(v(0), v(1), v(2))
+ziuaDelimitare = v(2)
+
+If ziuaDelimitare < 8 Then 'raportul se va face pentru luna anterioara
+
+    'coboara data pana la ziua de 1 a lunii curente
+    Do While Day(d) <> 1 And k < 50
+        k = k + 1
+        d = DateAdd("d", -1, d) 'scade o zi
+    Loop
+End If
+    
+'coboara data pana la prima zi de luni fata de ziua raportarii (daca ziuaDelimitare < 8, pana la ultima zi de luni a lunii anterioare)
+k = 0
+wd = Weekday(d, vbMonday)
+Do While wd <> 1 And k < 50
+    k = k + 1
+    d = DateAdd("d", -1, d) 'scade o zi
+    wd = Weekday(d, vbMonday) 'afla ziua din saptamana (1 = luni, 7 = duminica)
+Loop
+
+'adauga la sfarsit zilele de sarbatoare
+k = 0
+Do While dictZileLibere.Exists(d) And k < 100
+    d = DateAdd("d", 1, d) 'adauga o zi
+
+Loop
+dd = d 'face o copie a datei pentru a afla data finala
+strDataSfarsit = Year(d) & "-" & leadZero(Month(d), 2) & "-" & leadZero(Day(d), 2)
+
+'urca pana la ziua de joi dupa data sfarsit pentru a obtine data finala
+k = 0
+'dd = DateAdd("d", 1, dd) 'adauga o zi
+Do While Weekday(dd, vbMonday) <> 4 And k < 50
+    k = k + 1
+    dd = DateAdd("d", 1, dd) 'adauga o zi
+Loop
+strDataFinala = Year(dd) & "-" & leadZero(Month(dd), 2) & "-" & leadZero(Day(dd), 2)
+
+
+'coboara data pana la ziua de 7 a lunii curente
+k = 0
+d = DateAdd("d", -1, d) 'scade o zi
+Do While Day(d) <> 7 And k < 50
+    k = k + 1
+    d = DateAdd("d", -1, d) 'scade o zi
+Loop
+
+'coboara data pana la prima zi de luni fata de ziua de 7 a lunii anterioare
+k = 0
+wd = Weekday(d, vbMonday)
+Do While wd <> 1 And k < 50
+    k = k + 1
+    d = DateAdd("d", -1, d) 'scade o zi
+    wd = Weekday(d, vbMonday) 'afla ziua din saptamana (1 = luni, 7 = duminica)
+Loop
+If Day(d) = 1 Then 'ziua de 1 pica lunea si n-ar trebui inclusa in luna. Se va creste la lunea urmatoare
+    'urca data pana la prima zi de luni fata de ziua de 1 a lunii anterioare
+    k = 0
+    d = DateAdd("d", 1, d) 'adauga o zi
+    wd = Weekday(d, vbMonday)
+    Do While wd <> 1 And k < 50
+        k = k + 1
+        d = DateAdd("d", 1, d) 'adauga o zi
+        wd = Weekday(d, vbMonday) 'afla ziua din saptamana (1 = luni, 7 = duminica)
+    Loop
+End If
+
+'scade 3 zile pentru a ajunge pe ziua de vineri
+For k = 1 To 3
+    d = DateAdd("d", -1, d) 'scade o zi
+ 
+Next k
+
+'adauga la inceput zilele de sarbatoare
+k = 0
+Do While dictZileLibere.Exists(d) And k < 100
+    d = DateAdd("d", -1, d) 'scade o zi
+
+Loop
+strDataInceput = Year(d) & "-" & leadZero(Month(d), 2) & "-" & leadZero(Day(d), 2)
+                                    
+End Sub
+Private Function leadZero(s As String, nr As Long)
+    Dim k As Long
+    For k = 1 To nr - Len(s)
+        s = "0" & s
+    Next k
+    leadZero = s
+End Function
+Sub Executa()
+Dim actw As Workbook, ws As Workbook, sh As Worksheet, k As Long, i As Long, n As Long, numeFisier As String
+Dim colCumulat As Long, colBI As Long, coloanaCumulat As String, coloanaBI As String
+Dim luni(), lun()
+luni = Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+lun = Array("Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Noi", "Dec")
+Dim s As String, arrCombustibili(), arrFiliale(), arrKmLog(), arrMasini(), arrSpreadsheets(), arrUtilizatori(), arrZileLibere()
+Dim ultimulRand As Long, ultimaColoana As Long, myR As Range, arr(), v() As String, arrOutView(), arrKmLogView()
+Dim pathConfig As String
+Dim dataRaportarii As Date, dataInceput As Date, dataSfarsit As Date, dataFinala As Date
+Dim strDataRaportarii As String, strDataInceput As String, strDataSfarsit As String, strDataFinala As String
+Dim lunaCurenta As Long, anulCurent As Long
+Dim impartePeFiliale As Boolean, impartePeUtilizatori As Boolean, impartePeFilialeMail As Boolean, impartePeUtilizatoriMail As Boolean
+Dim dictUtilizatori As New scripting.Dictionary, dictFiliale As New scripting.Dictionary, dictZileLibere As New scripting.Dictionary
+Dim oFso As Object, oFolder As Object, oFile As Object
+Dim numeFiliala As String, emailFiliala As String, numeUtilizator As String, emailUtilizator As String
+Dim marimeParteARhiva As Long, imparteArhivaFiliale As Boolean, numarPartiArhiva As Long, folderDeArhivat As String, imparteArhivaUtilizatori As Boolean
+
+Dim fisierCurent As String
+Application.DisplayAlerts = False
+Set dictConfig = incarcaSetari(numeRobot)
+
+Set dictUtilizatori = New scripting.Dictionary
+strDataRaportarii = dictConfig("Data interogare")
+
+impartePeFiliale = dictConfig("Imparte pe filiale")
+impartePeUtilizatori = dictConfig("Imparte pe agenti")
+impartePeFilialeMail = dictConfig("Imparte pe filiale mail")
+impartePeUtilizatoriMail = dictConfig("Imparte pe agenti mail")
+
+'incarca preturile la combustibili (1=Motorina, 2=Benzina)
+Dim mySql As String
+mySql = "Select * from Combustibili"
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrCombustibili = Range("MyQuery").Value
+
+'incarca Filialele
+mySql = "Select * from Filiale"
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrFiliale = Range("MyQuery").Value
+
+'incarca masinile
+mySql = "Select * from Masini"
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrMasini = Range("MyQuery").Value
+
+'incarca numele si id-ul spreadsheturilor google
+mySql = "Select * from Spreadsheets"
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrSpreadsheets = Range("MyQuery").Value
+
+'incarca utilizatorii (soferii)
+mySql = "Select * from Utilizatori"
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrUtilizatori = Range("MyQuery").Value
+
+'incarca zilele libere
+mySql = "Select * from ZileLibere Order By Data"
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrZileLibere = Range("MyQuery").Value
+For k = 1 To UBound(arrZileLibere, 1)
+    dictZileLibere.Add arrZileLibere(k, 2), arrZileLibere(k, 3)
+Next k
+Dim arrStart() As Date, arrStop() As Date
+AflaDateleDeInceputSfarsitFinal strDataRaportarii, strDataInceput, strDataSfarsit, strDataFinala, dictZileLibere
+AflaIntervaleleDePlata dataInceput, dataSfarsit, dictZileLibere, arrStart(), arrStop()
+
+v = Split(strDataInceput, "-")
+dataInceput = DateSerial(v(0), v(1), v(2))
+v = Split(strDataSfarsit, "-")
+dataSfarsit = DateSerial(v(0), v(1), v(2))
+v = Split(strDataFinala, "-")
+dataFinala = DateSerial(v(0), v(1), v(2))
+
+'incarca raportul final, partea stanga, din OutView din baza de date (este un view)
+mySql = "SELECT * from OutView order by Filiala, Nume"
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrOutView = Range("MyQuery").Value
+
+
+'incarca kilometrii introdusi de utilizatori intre datele de inceput si final (atentie, data finala cuprinde si zilele de luni, marti, miercuri si joi de dupa data sfarsit,
+'zile in care utilizatorii mai pot introduce km, cu conditia ca indexul intre doua inregistrari sa fie crescator
+mySql = "SELECT KmLog.Data, Masini.Numar, Utilizatori.Nume, KmLog.Km, KmLog.Status, KmLog.PozaDinBord, Spreadsheets.Nume AS Spreadsheet FROM KmLog INNER JOIN " & _
+        "Masini ON KmLog.MasinaId = Masini.Id INNER JOIN Utilizatori ON Masini.UtilizatorId = Utilizatori.Id INNER JOIN Spreadsheets ON KmLog.Spreadsheets_id = Spreadsheets.Id " & _
+        "WHERE        (KmLog.Data >= '" & strDataInceput & "') AND (KmLog.Data <= '" & strDataFinala & "')"
+
+Call ExecutaSQLNew("MyQuery", mySql, "KmAuto")
+arrKmLogView = Range("MyQuery").Value
+
+
+v = Split(strDataRaportarii, "-")
+dataRaportarii = DateSerial(v(0), v(1), v(2))
+lunaCurenta = v(1)
+anulCurent = v(0)
+numeFisier = "KmAuto " & strDataRaportarii & ".xlsx"
+Cells(9, 2) = ""
+Set actw = ActiveWorkbook
+pathConfig = dictConfig("Cale aplicatie") & "Robots\" & dictConfig("Nume aplicatie")
+On Error Resume Next
+    MkDir pathConfig & "\output"
+    MkDir pathConfig & "\output\" & strDataRaportarii
+    pathConfig = pathConfig & "\output\"
+    MkDir pathConfig & strDataRaportarii
+    MkDir pathConfig & strDataRaportarii & "\filiale"
+    MkDir pathConfig & strDataRaportarii & "\utilizatori"
+    fisierCurent = pathConfig & strDataRaportarii & "\" & dictConfig("Nume robot") & " - " & strDataRaportarii & ".xlsx"
+    Kill (fisierCurent)
+On Error GoTo 0
+If dictConfig("Executa macro excel") = True Then
+    'creaza si salveaza fisierul de iesire curent
+    Set ws = Workbooks.Add
+    ws.SaveAs fisierCurent
+    
+    'scrie capul de tabel pentru coloanele fixe (pana la consum mediu estimat)
+    Cells(1, 1) = "Numar"
+    Cells(1, 2) = "Marca"
+    Cells(1, 3) = "Model"
+    Cells(1, 4) = "Filiala"
+    Cells(1, 5) = "Utilizator"
+    Cells(1, 6) = "Retinere"
+    Cells(1, 7) = "Limita " & vbLf & "km"
+    Cells(1, 8) = "Tip " & vbLf & "carburant"
+    Cells(1, 9) = "Consum " & vbLf & "mediu " & vbLf & "estimat"
+    Call ArrayToRange(rowStart:=2, columnStart:=1, arr:=arrOutView, transpose:=False)
+    FormatLeft
+    
+    'afla saptamanile din raport intre strDataInceput si strDataFinala
+    Dim d As Date, wd As Long
+    d = dataInceput
+    Do While d <> dataFinala
+        wd = Weekday(d, vbSunday) 'ziua din saptamana, luni =1 duminica = 7
+
+        d = DateAdd("d", 1, d)
+    Loop
+    
+    Stop
+    
+    ws.Close True
+    
+    If impartePeFiliale = True Then
+        impartePeFiliale_fx pathConfig, numeFisier, strDataRaportarii
+    End If
+    If impartePeUtilizatori = True Then
+        impartePeUtilizatori_fx pathConfig, numeFisier, strDataRaportarii
+    End If
+End If
+
+Dim fisierDeTransmis As String
+If dictConfig("Trimite emailuri") = True Then
+    ReDim attach(1)
+    fisierDeTransmis = pathConfig & strDataRaportarii & "\" & dictConfig("Nume robot") & " " & strDataRaportarii & ".xlsx"
+    attach(1) = fisierDeTransmis
+    TrimiteEmail dictConfig("Email admin"), dictConfig("Email subiect"), dictConfig("Email continut") & dictConfig("Data interogare"), attach(), dictConfig("Email admin BCC")
+    
+    If dictConfig("Trimite emailuri doar la admin") = False Then
+        TrimiteEmail dictConfig("Email To"), dictConfig("Email subiect"), dictConfig("Email continut") & dictConfig("Data interogare"), attach(), dictConfig("Email CC"), dictConfig("Email BCC")
+    End If
+    If impartePeFilialeMail = True Then
+        'mai intai trimite la admin
+        marimeParteARhiva = 18
+        folderDeArhivat = dictConfig("Cale aplicatie") & "Robots\" & dictConfig("Nume aplicatie") & "\output\" & dictConfig("Data interogare") & "\filiale\"
+        imparteArhivaFiliale = (FolderSize(folderDeArhivat) > marimeParteARhiva * 1000000) 'daca suma totala a fisierelor din 'filiale' este peste marimeParteArhiva
+        numarPartiArhiva = creazaArhivaZip(folderDeArhivat, dictConfig("Cale aplicatie") & "Robots\" & dictConfig("Nume aplicatie") & "\output\" & dictConfig("Data interogare") & "\" & dictConfig("Nume aplicatie") & "_filiale" & ".zip", imparteArhivaFiliale, marimeParteARhiva)
+        For k = 1 To numarPartiArhiva
+            attach(1) = dictConfig("Cale aplicatie") & "Robots\" & dictConfig("Nume aplicatie") & "\output\" & dictConfig("Data interogare") & "\" & dictConfig("Nume aplicatie") & "_filiale" & IIf(imparteArhivaFiliale = False, "", "_" & k) & ".zip"
+            TrimiteEmail dictConfig("Email admin"), dictConfig("Email subiect") & "_filiale" & IIf(imparteArhivaFiliale = False, "", "_" & k), dictConfig("Email continut") & dictConfig("Data interogare"), attach(), dictConfig("Email admin BCC")
+            
+        Next k
+        'trimite individual la fiecare achizitor
+        If dictConfig("Trimite emailuri doar la admin") = False Then
+            Set oFso = CreateObject("Scripting.FileSystemObject")
+            Set oFolder = oFso.GetFolder(folderDeArhivat)
+            'Debug.Print oFolder.Files.Count
+            For Each oFile In oFolder.Files
+                ReDim attach(1)
+                attach(1) = oFile.path
+                numeFiliala = extrageNumeDinNumeFisier(oFile.Name, dictConfig("Data interogare"))
+                emailFiliala = dictFiliale(numeFiliala)
+                If emailFiliala <> "" Then
+                    TrimiteEmail emailFiliala, dictConfig("Email subiect"), dictConfig("Email continut") & dictConfig("Data interogare"), attach(), dictConfig("Email admin BCC")
+                Else
+                    Sheets("Config").Cells(9, 2) = Sheets("Config").Cells(9, 2) & vbLf & "Eroare trimitere email. Nu exista " & numeFiliala & " in tabelul Asignare_producator_achizitor din Robots in SQLServer"
+                End If
+
+            Next
+        End If
+    End If
+    If impartePeUtilizatoriMail = True Then
+        'mai intai trimite la admin
+        marimeParteARhiva = 18
+        folderDeArhivat = dictConfig("Cale aplicatie") & "Robots\" & dictConfig("Nume aplicatie") & "\output\" & dictConfig("Data interogare") & "\utilizatori\"
+        imparteArhivaUtilizatori = (FolderSize(folderDeArhivat) > marimeParteARhiva * 1000000) 'daca suma totala a fisierelor din 'utilizatori' este peste marimeParteArhiva
+        numarPartiArhiva = creazaArhivaZip(folderDeArhivat, dictConfig("Cale aplicatie") & "Robots\" & dictConfig("Nume aplicatie") & "\output\" & dictConfig("Data interogare") & "\" & dictConfig("Nume aplicatie") & "_utilizatori" & ".zip", imparteArhivaUtilizatori, marimeParteARhiva)
+        For k = 1 To numarPartiArhiva
+            attach(1) = dictConfig("Cale aplicatie") & "Robots\" & dictConfig("Nume aplicatie") & "\output\" & dictConfig("Data interogare") & "\" & dictConfig("Nume aplicatie") & "_utilizatori" & IIf(imparteArhivaUtilizatori = False, "", "_" & k) & ".zip"
+            TrimiteEmail dictConfig("Email admin"), dictConfig("Email subiect") & "_utilizatori" & IIf(imparteArhivaUtilizatori = False, "", "_" & k), dictConfig("Email continut") & dictConfig("Data interogare"), attach(), dictConfig("Email admin BCC")
+            
+        Next k
+
+        'trimite individual la fiecare achizitor
+        If dictConfig("Trimite emailuri doar la admin") = False Then
+            Set oFso = CreateObject("Scripting.FileSystemObject")
+            Set oFolder = oFso.GetFolder(folderDeArhivat)
+            'Debug.Print oFolder.Files.Count
+            For Each oFile In oFolder.Files
+                ReDim attach(1)
+                attach(1) = oFile.path
+                numeUtilizator = extrageNumeDinNumeFisier(oFile.Name, dictConfig("Data interogare"))
+                emailUtilizator = dictUtilizatori(numeUtilizator)
+                If emailUtilizator <> "" Then
+                    TrimiteEmail emailUtilizator, dictConfig("Email subiect"), dictConfig("Email continut") & dictConfig("Data interogare"), attach(), dictConfig("Email admin BCC")
+                Else
+                    Sheets("Config").Cells(9, 2) = Sheets("Config").Cells(9, 2) & vbLf & "Eroare trimitere email. Nu exista " & numeUtilizator & " in tabelul Asignare_producator_achizitor din Robots in SQLServer"
+                End If
+
+            Next
+        End If
+    End If
+End If
+Sheets("Config").Select
+If Cells(9, 2) = "" Then
+    Cells(9, 2) = "Executie cu succes"
+End If
+
+
+Application.DisplayAlerts = True
+
+End Sub
+
+Sub FormatLeft()
+'
+' Macro2 Macro
+'
+
+'
+    Range("A1:I1").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Font.Bold = True
+    Selection.Style = "Good"
+    Selection.AutoFilter
+    Cells.EntireColumn.AutoFit
+
+End Sub
+
+Public Sub exFiliale()
+Dim pathConfig As String, strDataRaportarii As String, numeFisier As String
+pathConfig = "C:\Consolight_RPA\Robots\raport-clienti-relocati\output\"
+numeFisier = "KmAuto 2022-03-08.xlsx"
+strDataRaportarii = "2022-03-08"
+impartePeFiliale_fx pathConfig, numeFisier, strDataRaportarii
+End Sub
+Public Sub exUtilizatori()
+Dim pathConfig As String, strDataRaportarii As String, numeFisier As String
+pathConfig = "C:\Consolight_RPA\Robots\raport-clienti-relocati\output\"
+numeFisier = "KmAuto 2022-03-08.xlsx"
+strDataRaportarii = "2022-03-08"
+impartePeUtilizatori_fx pathConfig, numeFisier, strDataRaportarii
+End Sub
+Private Sub impartePeFiliale_fx(pathConfig As String, numeFisier As String, strDataRaportarii As String)
+Dim k As Long, i As Long, ws As Workbook, ws1 As Workbook, ultimulRand As Long, ultimaColoana As Long, n As Long, filiale() As String, utilizatori() As String, latimiColoane() As Double
+Dim startt As Long, stopp As Long, gasit As Boolean
+
+Set ws = Workbooks.Open(pathConfig & strDataRaportarii & "\" & numeFisier)
+Sheets("Cumulat").Select
+ultimulRand = ActiveSheet.UsedRange.Rows.Count
+ultimaColoana = ActiveSheet.UsedRange.Columns.Count
+
+'citeste din fisierul mare in mod unic filialele
+ReDim filiale(0)
+For k = 3 To ultimulRand
+    gasit = False
+    For i = 0 To UBound(filiale)
+        If filiale(i) = Cells(k, 5) Then
+            gasit = True
+            Exit For
+        End If
+    Next i
+    If gasit = False And Cells(k, 5) <> "" And Cells(k, 5) <> "--" Then
+        filiale(UBound(filiale)) = Cells(k, 5)
+        ReDim Preserve filiale(UBound(filiale) + 1)
+    End If
+Next k
+ReDim Preserve filiale(UBound(filiale) - 2)
+QuickSortVector filiale
+
+'sorteaza dupa filiale crescator si imediat dupa profit net 2020 (coloana CH) descrescator
+ActiveWorkbook.Worksheets("Cumulat").Sort.SortFields.Clear
+ActiveWorkbook.Worksheets("Cumulat").Sort.SortFields.Add2 Key:=Range( _
+    "E3:E" & ultimulRand), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+    xlSortNormal
+ActiveWorkbook.Worksheets("Cumulat").Sort.SortFields.Add2 Key:=Range( _
+    "G3:G" & ultimulRand), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+    xlSortNormal
+
+With ActiveWorkbook.Worksheets("Cumulat").Sort
+    .SetRange Range("A3:CK" & ultimulRand)
+    .Header = xlYes
+    .MatchCase = False
+    .Orientation = xlTopToBottom
+    .Apply
+End With
+
+'noteaza latimile coloanelor din fisierul mare
+ReDim latimiColoane(ultimaColoana)
+For k = 1 To ultimaColoana
+    latimiColoane(k) = Columns(NumberToLetter(k) & ":" & NumberToLetter(k)).ColumnWidth
+Next k
+'imparte fisierul final pe filiale
+For k = 0 To UBound(filiale)
+    ws.Activate
+    startt = 0: stopp = 0
+    For i = 3 To ultimulRand
+        If startt = 0 And stopp = 0 And Cells(i, 5) = filiale(k) Then
+            startt = i
+        End If
+        If startt > 0 And stopp = 0 And (Cells(i, 5) <> filiale(k) Or i = ultimulRand) Then
+            stopp = i - 1
+            Exit For
+        End If
+    Next i
+    If stopp = 0 Then stopp = startt
+    
+    Set ws1 = Workbooks.Add
+    ws1.SaveAs pathConfig & strDataRaportarii & "\Filiale\KmAuto " & filiale(k) & " " & strDataRaportarii & ".xlsx"
+    ws.Activate
+    Rows("1:2").Select
+    Selection.Copy
+    ws1.Activate
+    Range("A1").Select
+    ActiveSheet.Paste
+    ws.Activate
+    Rows(startt & ":" & stopp).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    ws1.Activate
+    Range("A3").Select
+    ActiveSheet.Paste
+    Range("A1").Select
+    'reface latimile coloanelor conform fisierului mare
+    For i = 1 To ultimaColoana
+        Columns(NumberToLetter(i) & ":" & NumberToLetter(i)).ColumnWidth = latimiColoane(i)
+    Next i
+
+    ws1.Close True
+Next k
+ws.Activate
+
+ws.Close False
+End Sub
+
+Private Sub impartePeUtilizatori_fx(pathConfig As String, numeFisier As String, strDataRaportarii As String)
+Dim k As Long, i As Long, ws As Workbook, ws1 As Workbook, ultimulRand As Long, ultimaColoana As Long, n As Long, filiale() As String, utilizatori() As String, latimiColoane() As Double
+Dim startt As Long, stopp As Long, gasit As Boolean
+
+Set ws = Workbooks.Open(pathConfig & strDataRaportarii & "\" & numeFisier)
+Sheets("Cumulat").Select
+ultimulRand = ActiveSheet.UsedRange.Rows.Count
+ultimaColoana = ActiveSheet.UsedRange.Columns.Count
+
+'citeste din fisierul mare in mod unic utilizatorii
+ReDim utilizatori(0)
+For k = 3 To ultimulRand
+    gasit = False
+    For i = 0 To UBound(utilizatori)
+       If utilizatori(i) = Cells(k, 4) Then
+            gasit = True
+            Exit For
+        End If
+    Next i
+    If gasit = False And Cells(k, 4) <> "" Then
+        utilizatori(UBound(utilizatori)) = Cells(k, 4)
+        ReDim Preserve utilizatori(UBound(utilizatori) + 1)
+    End If
+Next k
+ReDim Preserve utilizatori(UBound(utilizatori) - 1)
+QuickSortVector utilizatori
+
+
+'noteaza latimile coloanelor din fisierul mare
+ReDim latimiColoane(ultimaColoana)
+For k = 1 To ultimaColoana
+    latimiColoane(k) = Columns(NumberToLetter(k) & ":" & NumberToLetter(k)).ColumnWidth
+Next k
+ws.Activate
+
+'imparte fisierul final pe utilizatori
+ActiveWorkbook.Worksheets("Cumulat").Sort.SortFields.Clear
+ActiveWorkbook.Worksheets("Cumulat").Sort.SortFields.Add2 Key:=Range( _
+    "D3:D" & ultimulRand), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+    xlSortNormal
+ActiveWorkbook.Worksheets("Cumulat").Sort.SortFields.Add2 Key:=Range( _
+    "G3:G" & ultimulRand), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+    xlSortNormal
+With ActiveWorkbook.Worksheets("Cumulat").Sort
+    .SetRange Range("A3:CK" & ultimulRand)
+    .Header = xlYes
+    .MatchCase = False
+    .Orientation = xlTopToBottom
+    .SortMethod = xlPinYin
+    .Apply
+End With
+
+For k = 0 To UBound(utilizatori)
+    ws.Activate
+    startt = 0: stopp = 0
+    For i = 3 To ultimulRand
+        If startt = 0 And stopp = 0 And Cells(i, 4) = utilizatori(k) Then
+            startt = i
+        End If
+        If startt > 0 And stopp = 0 And (Cells(i, 4) <> utilizatori(k) Or i = ultimulRand) Then
+            stopp = i - 1
+            Exit For
+        End If
+    Next i
+    If stopp = 0 Then stopp = startt
+    
+    Set ws1 = Workbooks.Add
+    ws1.SaveAs pathConfig & strDataRaportarii & "\Utilizatori\KmAuto " & utilizatori(k) & " " & strDataRaportarii & ".xlsx"
+    ws.Activate
+    Rows("1:2").Select
+    Selection.Copy
+    ws1.Activate
+    Range("A1").Select
+    ActiveSheet.Paste
+    ws.Activate
+    Rows(startt & ":" & stopp).Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    ws1.Activate
+    Range("A3").Select
+    ActiveSheet.Paste
+    Range("A1").Select
+    'reface latimile coloanelor conform fisierului mare
+    For i = 1 To ultimaColoana
+        Columns(NumberToLetter(i) & ":" & NumberToLetter(i)).ColumnWidth = latimiColoane(i)
+    Next i
+
+    ws1.Close True
+Next k
+ws.Close False
+End Sub
+
+
+Private Sub scrieVlookup(colCumulat As Long, colBI As Long, ultimulRand As Long)
+Dim coloanaCumulat As String, coloanaBI As String
+    coloanaCumulat = NumberToLetter(colCumulat)
+    coloanaBI = NumberToLetter(colBI)
+
+    Range(coloanaCumulat & "3").Select
+    Application.CutCopyMode = False
+    Application.CutCopyMode = False
+    '=IFERROR(VLOOKUP(A3,BI!A:AD,5,0), 0)
+    ActiveCell.Formula = "=IFERROR(VLOOKUP(A3,BI!A:AD," & colBI & " ,0),0)"
+    Selection.AutoFill Destination:=Range(coloanaCumulat & "3:" & coloanaCumulat & ultimulRand)
+
+End Sub
+Private Function AflaColoanaBI(numarAn As Long, numrLuna As Long, luni() As Variant, arr() As Variant) As Long
+Dim k As Long, i As Long
+On Error GoTo trateaza:
+For k = 1 To UBound(arr, 1)
+   If luni(numrLuna) = arr(k, 2) Then
+      For i = 0 To 2
+        If arr(k + i, 3) = numarAn Then
+            AflaColoanaBI = k + i
+            Exit Function
+        End If
+      Next i
+   End If
+Next k
+trateaza:
+AflaColoanaBI = 0
+End Function
+Private Function NumberToLetter(nrcol As Long) As String
+'PURPOSE: Convert a given number into it's corresponding Letter Reference
+'SOURCE: www.TheSpreadsheetGuru.com/the-code-vault
+
+Dim ColumnNumber As Long
+Dim ColumnLetter As String
+
+'Input Column Number
+  ColumnNumber = nrcol
+
+'Convert To Column Letter
+  ColumnLetter = Split(Cells(1, ColumnNumber).Address, "$")(1)
+  
+'Display Result
+  NumberToLetter = ColumnLetter
+  
+End Function
+Public Sub ArrayToRange(rowStart As Long, columnStart As Long, arr() As Variant, Optional transpose = False)
+    If transpose = True Then
+        ActiveWorkbook.Names.Add Name:="DestRange", RefersToR1C1:="='" & ActiveSheet.Name & "'!R" & rowStart & "C" & columnStart & ":R" & rowStart + UBound(arr, 2) - 1 & "C" & columnStart + UBound(arr, 1) - 1
+        Range("DestRange") = Application.WorksheetFunction.transpose(arr())
+    Else
+        ActiveWorkbook.Names.Add Name:="DestRange", RefersToR1C1:="='" & ActiveSheet.Name & "'!R" & rowStart & "C" & columnStart & ":R" & rowStart + UBound(arr, 1) - 1 & "C" & columnStart + UBound(arr, 2) - 1
+        Cells.NumberFormat = "0"
+        Range("DestRange") = arr()
+    End If
+End Sub
+Public Function RangeToArray(rowStart As Long, columnStart As Long, rowEnd As Long, columnEnd As Long, Optional transpose = False) As Variant
+    Dim arr() As Variant
+    ActiveWorkbook.Names.Add Name:="SourceRange", RefersToR1C1:="='" & ActiveSheet.Name & "'!R" & rowStart & "C" & columnStart & ":R" & rowEnd & "C" & columnEnd
+    arr = Range("SourceRange")
+    Cells.NumberFormat = "0"
+    If transpose = True Then
+        RangeToArray = Application.WorksheetFunction.transpose(arr())
+    Else
+         RangeToArray = arr()
+    End If
+End Function
+Public Sub QuickSortVector(ByRef SortArray As Variant, Optional lngMin As Long = -1, Optional lngMax As Long = -1)
+    On Error Resume Next
+
+    'Sort a 1-Dimensional array
+
+    ' SampleUsage: sort arrData
+    '
+    '   QuickSortVector arrData
+
+    '
+    ' Originally posted by Jim Rech 10/20/98 Excel.Programming
+
+
+    ' Modifications, Nigel Heffernan:
+    '       ' Escape failed comparison with an empty variant in the array
+    '       ' Defensive coding: check inputs
+
+    Dim i As Long
+    Dim j As Long
+    Dim varMid As Variant
+    Dim varX As Variant
+
+    If IsEmpty(SortArray) Then
+        Exit Sub
+    End If
+    If InStr(TypeName(SortArray), "()") < 1 Then  'IsArray() is somewhat broken: Look for brackets in the type name
+        Exit Sub
+    End If
+    If lngMin = -1 Then
+        lngMin = LBound(SortArray)
+    End If
+    If lngMax = -1 Then
+        lngMax = UBound(SortArray)
+    End If
+    If lngMin >= lngMax Then    ' no sorting required
+        Exit Sub
+    End If
+
+    i = lngMin
+    j = lngMax
+
+    varMid = Empty
+    varMid = SortArray((lngMin + lngMax) \ 2)
+
+    ' We  send 'Empty' and invalid data items to the end of the list:
+    If IsObject(varMid) Then  ' note that we don't check isObject(SortArray(n)) - varMid *might* pick up a default member or property
+        i = lngMax
+        j = lngMin
+    ElseIf IsEmpty(varMid) Then
+        i = lngMax
+        j = lngMin
+    ElseIf IsNull(varMid) Then
+        i = lngMax
+        j = lngMin
+    ElseIf varMid = "" Then
+        i = lngMax
+        j = lngMin
+    ElseIf VarType(varMid) = vbError Then
+        i = lngMax
+        j = lngMin
+    ElseIf VarType(varMid) > 17 Then
+        i = lngMax
+        j = lngMin
+    End If
+
+    While i <= j
+
+        While SortArray(i) < varMid And i < lngMax
+            i = i + 1
+        Wend
+        While varMid < SortArray(j) And j > lngMin
+            j = j - 1
+        Wend
+
+        If i <= j Then
+            ' Swap the item
+            varX = SortArray(i)
+            SortArray(i) = SortArray(j)
+            SortArray(j) = varX
+
+            i = i + 1
+            j = j - 1
+        End If
+
+    Wend
+
+    If (lngMin < j) Then Call QuickSortVector(SortArray, lngMin, j)
+    If (i < lngMax) Then Call QuickSortVector(SortArray, i, lngMax)
+
+End Sub
+Sub TrimiteEmail(emailTo As String, emailSubiect As String, emailBody As String, attach() As String, Optional emailCC As String, Optional emailBCC As String)
+    On Error GoTo ErrHandler
+    Dim k As Long
+    Dim objOutlook As Outlook.Application
+    Set objOutlook = New Outlook.Application
+    ' Set Outlook object.
+    
+    ' Create email object.
+    Dim objEmail As MailItem
+    Set objEmail = objOutlook.CreateItem(olMailItem)
+    
+    
+    With objEmail
+        .To = emailTo
+        .Subject = emailSubiect
+        .Body = emailBody
+        
+    End With
+    If emailCC <> "" Then
+        objEmail.CC = emailCC
+    End If
+    If emailBCC <> "" Then
+        objEmail.BCC = emailBCC
+    End If
+    Dim myAttachments As Outlook.Attachments
+    Set myAttachments = objEmail.Attachments
+    For k = 1 To UBound(attach()) 'atentie la Option Base = 1 (se va lua de la zero daca nu exista Option Base)
+        myAttachments.Add attach(k)
+    
+    Next k
+    objEmail.Send ' Display outlook message window.
+    ' Clear all objects.
+    Set objEmail = Nothing:    Set objOutlook = Nothing
+    If Trim(dictConfig("Temporizare intre emailuri")) <> "" And Trim(dictConfig("Temporizare intre emailuri")) <> "0" Then
+        WaitSeconds (CLng(dictConfig("Temporizare intre emailuri")))
+    End If
+    Exit Sub
+ErrHandler:
+Sheets("config").Cells(9, 2) = "A aparut o eroare: " & Err.Description
+End Sub
+
+Public Function incarcaSetari(numeRobot As String) As scripting.Dictionary
+'Incarca setarile din 'Configurare roboti'
+Dim arrConfig(), dt As Date
+arrConfig = AduceSetariRobotiDinSqlServer(numeRobot)
+Dim arrNumarRand(), arrSetari(), dict As scripting.Dictionary, ws As Workbook, k As Long
+arrSetari = Array("0", _
+"Nume robot", _
+"Nume aplicatie", _
+"Cale aplicatie", _
+"Extrage rapoarte excel din BI", _
+"Extrage rapoarte exccel din ERP", _
+"Executa SQL", _
+"Executa macro excel", _
+"Imparte pe filiale", _
+"Imparte pe agenti", _
+"Numar luni actualizate", _
+"Data interogare", _
+"Fisiere BI", _
+"Trimite emailuri", _
+"Trimite emailuri doar la admin", _
+"Tip raport", _
+"Email admin", _
+"Email admin BCC", _
+"Email subiect", _
+"Email continut", _
+"Email To", _
+"Email CC", _
+"Email BCC", _
+"Info", _
+"Imparte pe filiale mail", "Imparte pe agenti mail", "Temporizare intre emailuri", "Extrage rapoarte din BI alt", "Extrage rapoarte din ERP alt", "Executa Sql alt", "Numar luni actualizate alt")
+'face legatura intre numele setarii din foaia MyQuery si numarul randului (exista si randuri goale)
+arrNumarRand = Array(0, 2, 18, 3, 16, 17, 20, 15, 23, 24, 21, 4, 19, 14, 13, 12, 8, 9, 10, 6, 11, 7, 5, 22, 38, 39, 41, 42, 43, 44, 45)
+
+Set dict = New scripting.Dictionary
+'Set ws = Workbooks.Open("C:\Robots\Configurare roboti.xlsm")
+    Sheets("MyQuery").Select
+    dict(arrSetari(1)) = numeRobot
+    'Debug.Print dict(arrSetari(1))
+For k = 2 To UBound(arrSetari)
+    dict(arrSetari(k)) = arrConfig(1, arrNumarRand(k))
+    'Debug.Print dict(arrSetari(k))
+Next k
+If dict.Exists("Data interogare") Then
+    If dict("Data interogare") = "" Then
+        dt = Now()
+        dict("Data interogare") = Format(dt, "yyyy-mm-dd")
+    End If
+End If
+
+Set incarcaSetari = dict
+Set dict = Nothing
+Sheets("config").Select
+End Function
+
+Public Function AduceSetariRobotiDinSqlServer(numeRobot As String) As Variant
+Dim mySql As String, dictSettings As New scripting.Dictionary
+On Error Resume Next
+    ActiveWorkbook.Queries("MyQuery").Delete
+    Sheets("MyQuery").Delete
+    ActiveSheet.ListObjects("MyQuery").Delete
+    'MkDir dictSettings("Cale aplicatie") & dictSettings("Nume aplicatie") & "\data\" & dictSettings("Data interogare")
+    
+On Error GoTo 0
+    mySql = "Select * from Config Where NumeRobot = '" & numeRobot & "'"
+    Call ExecutaSQLNew("MyQuery", mySql, "Robots")
+    AduceSetariRobotiDinSqlServer = Range("MyQuery").Value
+End Function
+
+
+Sub ExecutaSQL(Nume As String, Sql As String)
+
+On Error Resume Next
+    ActiveWorkbook.Queries("MyQuery").Delete
+    Sheets("MyQuery").Delete
+    ActiveSheet.ListObjects("MyQuery").Delete
+    'MkDir dictSettings("Cale aplicatie") & dictSettings("Nume aplicatie") & "\data\" & dictSettings("Data interogare")
+    
+On Error GoTo 0
+
+Dim sh As Worksheet
+    'Sql = "let" & Chr(13) & "" & Chr(10) & "    Source = Sql.Database(""10.0.0.10"", """ & DatabaseName & """, [Query=""" & Sql & """])" & Chr(13) & "" & Chr(10) & "in" & Chr(13) & "" & Chr(10) & "    Source"
+    ActiveWorkbook.Queries.Add Name:=Nume, Formula:=Sql
+    Set sh = ActiveWorkbook.Worksheets.Add(After:=ActiveWorkbook.Sheets(1))
+    sh.Name = Nume
+    
+    With ActiveSheet.ListObjects.Add(SourceType:=0, Source:= _
+        "OLEDB;Provider=Microsoft.Mashup.OleDb.1;Data Source=$Workbook$;Location=" & Nume & ";Extended Properties=""""" _
+        , Destination:=Range("$A$1")).QueryTable
+        .CommandType = xlCmdSql
+        .CommandText = Array("SELECT * FROM [" & Nume & "]")
+        .RowNumbers = False
+        .FillAdjacentFormulas = False
+        .PreserveFormatting = True
+        .RefreshOnFileOpen = False
+        .BackgroundQuery = True
+        .RefreshStyle = xlInsertDeleteCells
+        .SavePassword = False
+        .SaveData = True
+        .AdjustColumnWidth = True
+        .RefreshPeriod = 0
+        .PreserveColumnInfo = True
+        .ListObject.DisplayName = Nume
+        .Refresh BackgroundQuery:=False
+    End With
+End Sub
+Sub ExecutaSQLNew(Nume As String, Sql As String, DatabaseName As String)
+
+On Error Resume Next
+    ActiveWorkbook.Queries("MyQuery").Delete
+    Sheets("MyQuery").Delete
+    ActiveSheet.ListObjects("MyQuery").Delete
+    'MkDir dictSettings("Cale aplicatie") & dictSettings("Nume aplicatie") & "\data\" & dictSettings("Data interogare")
+    
+On Error GoTo 0
+
+Dim sh As Worksheet
+    Sql = "let" & Chr(13) & "" & Chr(10) & "    Source = Sql.Database(""10.0.0.10"", """ & DatabaseName & """, [Query=""" & Sql & """])" & Chr(13) & "" & Chr(10) & "in" & Chr(13) & "" & Chr(10) & "    Source"
+    ActiveWorkbook.Queries.Add Name:=Nume, Formula:=Sql
+    Set sh = ActiveWorkbook.Worksheets.Add(After:=ActiveWorkbook.Sheets(1))
+    sh.Name = Nume
+    
+    With ActiveSheet.ListObjects.Add(SourceType:=0, Source:= _
+        "OLEDB;Provider=Microsoft.Mashup.OleDb.1;Data Source=$Workbook$;Location=" & Nume & ";Extended Properties=""""" _
+        , Destination:=Range("$A$1")).QueryTable
+        .CommandType = xlCmdSql
+        .CommandText = Array("SELECT * FROM [" & Nume & "]")
+        .RowNumbers = False
+        .FillAdjacentFormulas = False
+        .PreserveFormatting = True
+        .RefreshOnFileOpen = False
+        .BackgroundQuery = True
+        .RefreshStyle = xlInsertDeleteCells
+        .SavePassword = False
+        .SaveData = True
+        .AdjustColumnWidth = True
+        .RefreshPeriod = 0
+        .PreserveColumnInfo = True
+        .ListObject.DisplayName = Nume
+        .Refresh BackgroundQuery:=False
+    End With
+End Sub
+
+
+
+Private Function extrageNumeDinNumeFisier(numeFisier As String, dataInterogare As String) As String
+    Dim s As String, v() As String
+    v = Split(numeFisier, " " & dataInterogare)
+    v = Split(v(0), "KmAuto ")
+    extrageNumeDinNumeFisier = v(1)
+End Function
+Public Sub DeleteNonEmptyFolder(path As String, Optional onlyContent As Boolean = True)
+    Dim FSO As Object
+
+    Set FSO = CreateObject("scripting.filesystemobject")
+
+    If Right(path, 1) = "\" Then
+        path = Left(path, Len(path) - 1)
+    End If
+
+    If FSO.FolderExists(path) = False Then
+        Exit Sub
+    End If
+
+    On Error Resume Next
+    'Delete files
+    FSO.DeleteFile path & "\*.*", True
+    'Delete subfolders
+    FSO.DeleteFolder path & "\*.*", True
+    If onlyContent = False Then
+        RmDir (path)
+    End If
+    On Error GoTo 0
+End Sub
+
+Function creazaArhivaZip(folderDeArhivat As Variant, numeArhiva As Variant, Optional impartePeBucati As Boolean = False, Optional marimeMb As Long = 10) As Long
+'face o arhiva, eventual splitata. Returneaza numarul de parti ale arhivei
+Dim oFso As Object, oFolder As Object, oFile As Object, v() As String, partNr As Long, tempFolder As String, steagArhivare As Boolean, numeArhivaFaraExtensie As String
+tempFolder = "C:\zipTemp"
+On Error Resume Next
+    MkDir tempFolder
+On Error GoTo 0
+v = Split(numeArhiva, ".")
+    
+'daca impartePeBucati = true atunci va imparti arhiva mare in arhive mai mici de marimea marimeMb (cu aproximatie. De fapt se pun intr-un folder temp
+'fisier cu fisier pana cand se depaseste marimea marimeMb si apoi se arhiveaza intr-o arhiva cu un sufix numeric adaugat la numeArhiva
+If impartePeBucati = True Then
+    'sterge folderul temporar de arhivare
+    DeleteNonEmptyFolder tempFolder
+    'itereaza tot folderul de arhivat si pe rand adauga fisiere in folderul temporar pana cand marimea acestuia depaseste marimeMb
+    Set oFso = CreateObject("Scripting.FileSystemObject")
+    Set oFolder = oFso.GetFolder(folderDeArhivat)
+    partNr = 0
+    'Debug.Print oFolder.Files.Count
+    For Each oFile In oFolder.Files
+'        Debug.Print oFile.Name
+'        Debug.Print oFile.Path
+'        Debug.Print oFile.Size
+        FileCopy oFile.path, tempFolder & "\" & oFile.Name
+        steagArhivare = False
+        If impartePeBucati = True Then
+            If FolderSize(tempFolder) > marimeMb * 1000000 Then
+                partNr = partNr + 1
+                arhiveaza tempFolder, v(0) & "_" & partNr & "." & v(1)
+                DeleteNonEmptyFolder tempFolder
+                steagArhivare = True
+            End If
+        End If
+    Next
+    If steagArhivare = False Then 'au ramas fisiere in directorul temp a caror suma pe marime este mai mica decat marimeMb si care trebuie si ele puse
+        partNr = partNr + 1
+        If impartePeBucati = True Then
+            arhiveaza tempFolder, v(0) & "_" & partNr & "." & v(1)
+        Else
+            arhiveaza tempFolder, numeArhiva
+        
+        End If
+    End If
+Else
+     arhiveaza folderDeArhivat, numeArhiva
+     partNr = 1
+End If
+creazaArhivaZip = partNr
+
+End Function
+
+Sub arhiveaza(folderDeArhivat As Variant, numeArhiva As Variant)
+    'Dim ShellApp As Object
+    Dim ShellApp As New Shell32.Shell
+    'Create an empty zip file
+    Open numeArhiva For Output As #1
+    Print #1, Chr$(80) & Chr$(75) & Chr$(5) & Chr$(6) & String(18, 0)
+    Close #1
+    
+    'Copy the files & folders into the zip file
+    'Set ShellApp = CreateObject("Shell.Application")
+    ShellApp.Namespace(numeArhiva).CopyHere ShellApp.Namespace(folderDeArhivat).Items
+    
+    'Zipping the files may take a while, create loop to pause the macro until zipping has finished.
+    On Error Resume Next
+    Do Until ShellApp.Namespace(numeArhiva).Items.Count = ShellApp.Namespace(folderDeArhivat).Items.Count
+        Application.Wait (Now + TimeValue("0:00:01"))
+    Loop
+    On Error GoTo 0
+
+End Sub
+

@@ -1,0 +1,168 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dataInceput" Type="InArgument(s:DateTime)" />
+    <x:Property Name="in_spreadsheetId" Type="InArgument(x:String)" />
+    <x:Property Name="in_spreadsheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_dataRaportarii" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>932,1127</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Sequence1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="80">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.GSuite</x:String>
+      <x:String>UiPath.GSuite.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.FileIO</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence1" sap:VirtualizedContainerService.HintSize="476,1062" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="result" />
+      <Variable x:TypeArguments="sd:DataTable" Name="spreadsheetContentDataTable" />
+      <Variable x:TypeArguments="x:String" Default="Form Responses 1" Name="numeFoaie" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" sap2010:Annotation.AnnotationText="Scrie in spreadsheetContentDataTable continutul foiii Google Utilizatori" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,448" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="config/google_service_key.json" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+      <uga:GSuiteApplicationScope.AuthenticationScopes>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+          <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/spreadsheets</InArgument>
+        </scg:List>
+      </uga:GSuiteApplicationScope.AuthenticationScopes>
+      <uga:GSuiteApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ug:SimpleObjectContainer">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,305" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,217" sap2010:WorkflowViewState.IdRef="ReadRange_4" IncludeHeaders="True" Range="A:L" Result="[spreadsheetContentDataTable]" SheetName="[numeFoaie]" SpreadsheetId="[in_spreadsheetId]" />
+          </Sequence>
+        </ActivityAction>
+      </uga:GSuiteApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uga:GSuiteApplicationScope>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Data rap: &quot; + in_dataRaportarii]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Scrie in tabelul KmLog baza de date inregistrarile din spreadsheet-ul Google de introducre km continute in spreadsheetsContentDataTable" Code="&#x9;&#x9;Dim ExecutaSQL As Func(Of SqlClient.SqlCommand, String, String) =&#xD;&#xA;&#x9;&#x9;&#x9;Function(cmd As SqlClient.SqlCommand, Sql As String) As String&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim ds As New DataSet&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;cmd.CommandText = Sql&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim oDataAdapter As New SqlClient.SqlDataAdapter(cmd)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;oDataAdapter.Fill(ds)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Catch ex As System.Exception&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Return &quot;Eroare: Sql = &quot; &amp; sql &amp; vbcrlf &amp; &quot;Msg: &quot; &amp; ex.Message&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Return &quot;Ok&quot;&#xD;&#xA;&#x9;&#x9;&#x9;End Function&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;Dim ReturDataTable As Func(Of SqlClient.SqlCommand, String, System.Data.DataTable) =&#xD;&#xA;&#x9;&#x9;&#x9;Function(cmd As SqlClient.SqlCommand, Sql As String) As System.Data.DataTable&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim ds As New DataSet&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;cmd.CommandText = Sql&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim oDataAdapter As New SqlClient.SqlDataAdapter(cmd)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;oDataAdapter.Fill(ds)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Return ds.Tables(0)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Exit Function&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Catch ex As System.Exception&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Return New System.Data.DataTable&#xD;&#xA;&#x9;&#x9;&#x9;End Function&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;'primeste dataIn sub forma de string in mai multe formate si scoate data&#xD;&#xA;&#x9;&#x9;Dim ReturStrDataFromMultipleDateFormats As Func(Of String, Date) =&#xD;&#xA;&#x9;&#x9;&#x9;Function(dataIn As String) As Date&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Dim v() As Object, vv() As Object, vvv() As Object, dataOut As Date&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;If dataIn.Contains(&quot;.&quot;) Then 'data sub forma de numar double&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateTime.FromOADate(CType(dataIn, Double))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;ElseIf dataIn.Contains(&quot;/&quot;) Then 'data sub forma de 'MM/dd/yyyy HH:mm:ss&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;v = Split(dataIn, &quot; &quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;vv = Split(v(0).ToString, &quot;/&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;vvv = Split(v(1).ToString, &quot;:&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateSerial(CInt(vv(2)), CInt(vv(0)), CInt(vv(1)))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;h&quot;, CInt(vvv(0)), dataOut)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;n&quot;, CInt(vvv(1)), dataOut)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;s&quot;, CInt(vvv(2)), dataOut)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;ElseIf dataIn.Contains(&quot;-&quot;) Then 'data sub forma de 'yyyy-MM-dd HH:mm:ss'&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;v = Split(dataIn, &quot; &quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;vv = Split(v(0).ToString, &quot;-&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateSerial(CInt(vv(0)), CInt(vv(1)), CInt(vv(2)))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;If dataIn.Contains(&quot;:&quot;) Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;vvv = Split(v(1).ToString, &quot;:&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;h&quot;, CInt(vvv(0)), dataOut)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;n&quot;, CInt(vvv(1)), dataOut)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;s&quot;, CInt(vvv(2)), dataOut)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Return dataOut&#xD;&#xA;&#x9;&#x9;&#x9;End Function&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;'primeste dataIn sub forma de data si scoate string in format yyyy-MM-dd HH:mm:ss&#xD;&#xA;&#x9;&#x9;Dim ReturDataFromStrDateFormat As Func(Of Date, String) =&#xD;&#xA;&#x9;&#x9;&#x9;Function(dataIn As Date) As String&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Dim dataOut As String = dataIn.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Return dataOut&#xD;&#xA;&#x9;&#x9;&#x9;End Function&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;Dim kmAutoConnectionString As String = &quot;Data Source=10.0.0.10;Initial Catalog=KmAuto;Persist Security Info=True;User ID=sa;Password=P@ssword&quot;&#xD;&#xA;&#x9;&#x9;Dim kmAutoSqlCon As New SqlClient.SqlConnection&#xD;&#xA;&#x9;&#x9;Dim kmAutoCmd As New SqlClient.SqlCommand&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;kmAutoSqlCon.ConnectionString = kmAutoConnectionString&#xD;&#xA;&#x9;&#x9;kmAutoSqlCon.Open()&#xD;&#xA;&#x9;&#x9;kmAutoCmd.Connection = kmAutoSqlCon&#xD;&#xA;&#x9;&#x9;kmAutoCmd.CommandTimeout = 20000&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;'exista si spreadsheetId&#xD;&#xA;&#x9;&#x9;Dim res As String = &quot;Incarcare kmLog &quot; &amp; spreadsheetName &amp; vbCrLf&#xD;&#xA;&#x9;&#x9;Dim csvFilePath As String = &quot;d:\myFileLog.csv&quot;&#xD;&#xA;        'If File.Exists(csvFilePath) Then&#xD;&#xA;            'File.Delete(csvFilePath)&#xD;&#xA;        'End If&#xD;&#xA;        Dim outFile As New IO.StreamWriter(csvFilePath)&#xD;&#xA;        'outFile.WriteLine(&quot;Mincior, Vicentiu&quot;)&#xD;&#xA;&#x9;&#x9;For Each row As DataRow In inDataTable.Rows 'ia pe rand inregistrarile din foia Google cu km introdusi\&#xD;&#xA;&#x9;&#x9;&#x9;Dim dataIn As String, dataOut As Date, strData As String, masinaId As Long=-1, utilizatorId As Long=-1, sprId As Long=-1, sql As String = &quot;&quot;&#xD;&#xA;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;masinaId = CInt(ReturDataTable(kmAutoCmd, &quot;Select Id from Masini Where Numar = '&quot; &amp; row(&quot;Masina&quot;).ToString &amp; &quot;'&quot;).Rows(0)(0))&#xD;&#xA;&#x9;&#x9;&#x9;Catch&#xD;&#xA;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;utilizatorId = CLng(ReturDataTable(kmAutoCmd, &quot;Select Id from Utilizatori Where Nume = '&quot; &amp; row(&quot;Utilizator&quot;).ToString &amp; &quot;'&quot;).Rows(0)((0)))&#xD;&#xA;&#x9;&#x9;&#x9;Catch&#xD;&#xA;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;'e nevoie de id-ul cheie primara din tabelul Spreadsheets.&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;sprId = CLng(ReturDataTable(kmAutoCmd, &quot;Select Id from Spreadsheets Where SpreadsheetId = '&quot; &amp; spreadsheetId &amp; &quot;'&quot;).Rows(0)((0)))&#xD;&#xA;&#x9;&#x9;&#x9;Catch&#xD;&#xA;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;dataIn = row(&quot;Data si ora citirii kilometrajului&quot;).ToString&#xD;&#xA;&#x9;&#x9;&#x9;If dataIn &lt;&gt; &quot;&quot; Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;dataOut = ReturStrDataFromMultipleDateFormats(dataIn)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;strData = ReturDataFromStrDateFormat(ReturStrDataFromMultipleDateFormats(row(&quot;Timestamp&quot;).ToString))&#xD;&#xA;&#x9;&#x9;&#x9;Else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;dataOut = ReturStrDataFromMultipleDateFormats(row(&quot;Timestamp&quot;).ToString)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;strData = &quot;&quot;&#xD;&#xA;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;If dataOut &gt;= dataInceput Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;If masinaId  &lt;&gt;-1  And utilizatorId &lt;&gt;-1 Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;sql = &quot;INSERT INTO KmLog  (Data, MasinaId, UtilizatorId,  Km, PozaDinBord, Status, Spreadsheets_id, DataSiOraCitirii, Observatii, Asumat,  KmModificat, StatusModificat) VALUES  ('&quot; &amp; dataOut &amp; &quot;', &quot; &amp; masinaId &amp; &quot;, &quot; &amp; utilizatorId &amp; &quot;, '&quot; &amp; row(&quot;Km&quot;).ToString &amp; &quot;', '&quot; &amp; row(&quot;Poza din bord&quot;).ToString &amp; &quot;', '&quot; &amp; row(&quot;Status&quot;).ToString &amp; &quot;', '&quot; &amp; sprId &amp; &quot;', '&quot; &amp; strData &amp; &quot;', '&quot; &amp; row(&quot;Observatii&quot;).ToString &amp; &quot;', '&quot; &amp; row(&quot;Asumat&quot;).ToString &amp; &quot;', '&quot; &amp; row(&quot;Km modificat&quot;).ToString &amp; &quot;', '&quot; &amp; row(&quot;Status modificat&quot;).ToString &amp; &quot;');&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;res = ExecutaSQL(kmAutoCmd, sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;If res &lt;&gt;&quot;Ok&quot; Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;result &amp;= dataOut.ToString &amp; &quot;: &quot; &amp; strData &amp; &quot; - &quot; &amp; row(&quot;Masina&quot;).ToString &amp; &quot; - &quot; &amp; row(&quot;Utilizator&quot;).ToString &amp; res &amp; &quot; : &quot;  &amp; vbCrLf&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'outFile.WriteLine(dataOut.ToString &amp; &quot;,&quot; &amp; strData &amp; &quot;,&quot; &amp; row(&quot;Masina&quot;).ToString &amp; &quot;,&quot; &amp; row(&quot;Utilizator&quot;).ToString &amp; &quot;,&quot; &amp;  res &amp; &quot;,&quot; &amp;  sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'scrie in tabelul MasiniLog Soferul masinii pentru luna aceasta pentru a putea cauta intr-o arhiva&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;sql = &quot;INSERT INTO MasiniLog  (Masina, Sofer, Data, SpreadsheetName) VALUES  ('&quot; &amp; row(&quot;Masina&quot;).ToString &amp; &quot;', '&quot; &amp; row(&quot;Utilizator&quot;).ToString &amp; &quot;', '&quot; &amp; ReturStrDataFromMultipleDateFormats(dataRaportarii) &amp; &quot;', '&quot; &amp; spreadsheetName &amp; &quot;');&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;res = ExecutaSQL(kmAutoCmd, sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'outFile.WriteLine(row(&quot;Utilizator&quot;).ToString &amp; &quot;,&quot; &amp; row(&quot;Masina&quot;).ToString &amp; &quot;,&quot; &amp;  res &amp; &quot;,&quot; &amp;  sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Catch&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;If masinaId =-1 Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;sql = &quot;INSERT INTO MasiniInexistente  (Nume, SpreadsheetName) VALUES  ('&quot; &amp; row(&quot;Masina&quot;).ToString &amp; &quot;', '&quot; &amp; spreadsheetName &amp; &quot;');&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;res = ExecutaSQL(kmAutoCmd, sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'outFile.WriteLine(row(&quot;Masina&quot;).ToString &amp; &quot;,&quot; &amp; row(&quot;Utilizator&quot;).ToString &amp; &quot;,&quot; &amp;  res &amp; &quot;,&quot; &amp;  sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Catch&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;If utilizatorId = -1 Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;sql = &quot;INSERT INTO UtilizatoriInexistenti  (Nume, SpreadsheetName) VALUES  ('&quot; &amp; row(&quot;Utilizator&quot;).ToString &amp; &quot;', '&quot; &amp; spreadsheetName &amp; &quot;');&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Try&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;res = ExecutaSQL(kmAutoCmd, sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'outFile.WriteLine(row(&quot;Utilizator&quot;).ToString &amp; &quot;,&quot; &amp; row(&quot;Masina&quot;).ToString &amp; &quot;,&quot; &amp;  res &amp; &quot;,&quot; &amp;  sql)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Catch&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;End Try&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;Next&#xD;&#xA;        outFile.Close()&#xD;&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="434,222" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="result ">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="result" />
+        </OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="inDataTable">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="spreadsheetContentDataTable" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="spreadsheetId">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_spreadsheetId" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="spreadsheetName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_spreadsheetName" />
+        </InArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="dataInceput">
+          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_dataInceput" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="dataRaportarii">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dataRaportarii" />
+        </InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[result]" />
+  </Sequence>
+</Activity>

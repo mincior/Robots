@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kmAutoWebInterface", "kmAutoWebInterface.csproj", "{11994E34-3E67-4804-A347-37F14A96711D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11994E34-3E67-4804-A347-37F14A96711D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11994E34-3E67-4804-A347-37F14A96711D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11994E34-3E67-4804-A347-37F14A96711D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11994E34-3E67-4804-A347-37F14A96711D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20C373F4-1283-428F-B9D1-3E40E735E520}
+	EndGlobalSection
+EndGlobal

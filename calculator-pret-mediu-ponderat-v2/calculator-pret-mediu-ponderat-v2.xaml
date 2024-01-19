@@ -1,0 +1,278 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="calculator_pret_mediu_ponderat_v2" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1269,645" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="44">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Intrare principala" sap:VirtualizedContainerService.HintSize="376,580" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="caleAplicatie" />
+      <Variable x:TypeArguments="x:String" Name="numeAplicatie" />
+      <Variable x:TypeArguments="x:Boolean" Name="emailSend" />
+      <Variable x:TypeArguments="x:Boolean" Name="executaMacroExcel" />
+      <Variable x:TypeArguments="x:String" Name="rezultatExecutie" />
+      <Variable x:TypeArguments="x:String" Name="numeFisierIesire" />
+      <Variable x:TypeArguments="x:String" Name="dataRaportarii" />
+      <Variable x:TypeArguments="x:String" Name="tipRaport" />
+      <Variable x:TypeArguments="x:Boolean" Name="executaSQL" />
+      <Variable x:TypeArguments="x:String" Name="emailCC" />
+      <Variable x:TypeArguments="x:String" Name="emailBCC" />
+      <Variable x:TypeArguments="x:String" Name="emailTo" />
+      <Variable x:TypeArguments="x:String" Name="emailBody" />
+      <Variable x:TypeArguments="x:String" Name="emailSubiect" />
+      <Variable x:TypeArguments="x:Boolean" Name="extrageRapoarteExcelDinERP" />
+      <Variable x:TypeArguments="x:Boolean" Name="emailSendOnlyToMe" />
+      <Variable x:TypeArguments="x:String" Name="emailMe" />
+      <Variable x:TypeArguments="x:String" Name="emailSendOnlyToMeCC" />
+      <Variable x:TypeArguments="x:String" Name="numeRobot" />
+      <Variable x:TypeArguments="x:String" Name="fisiereBI" />
+      <Variable x:TypeArguments="x:Boolean" Name="extrageRapoarteExcelDinBI" />
+      <Variable x:TypeArguments="x:Int32" Name="numarLuniActualizate" />
+      <Variable x:TypeArguments="x:Boolean" Name="impartePeFiliale" />
+      <Variable x:TypeArguments="x:Boolean" Name="impartePeAgenti" />
+      <Variable x:TypeArguments="ui:Window" Name="myConsolightRobotsInterfaceWindow" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[numeRobot]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">Calculator pret mediu ponderat v2</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializareVariabileSQLServer" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="InitializareVariabileSQLServer.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_caleAplicatie">[caleAplicatie]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_numeAplicatie">[numeAplicatie]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_tipRaport">[tipRaport]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_executaMacroExcel">[cbool(executaMacroExcel)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailCC">[emailCC]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailBcc">[emailBCC]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailTo">[emailTo]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailBody">[emailBody]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailSubiect">[emailSubiect]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_extrageRapoarteExcelDinERP">[cbool(extrageRapoarteExcelDinERP)]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_emailSend">[cbool(emailSend)]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_emailSendOnlyToMe">[cbool(emailSendOnlyToMe)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailMe">[emailMe]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailSendOnlyToMeCC">[emailSendOnlyToMeCC]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_dataRaportarii">[dataRaportarii]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_executaSQL">[cbool(executaSQL)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_fisiereBI">[fisiereBI]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_extrageRapoarteExcelDinBI">[cbool(extrageRapoarteExcelDinBI)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_numeFisierOutput">[numeFisierIesire]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_numarLuniActualizate">[numarLuniActualizate]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_impartePeFiliale">[cbool(impartePeFiliale)]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_impartePeAgenti">[cbool(impartePeAgenti)]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_numeRobot">[numeRobot]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,114" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:OpenApplication Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" ApplicationWindow="[myConsolightRobotsInterfaceWindow]" DisplayName="Open Application 'consolightrobotsinterfa...'" FileName="C:\Consolight_RPA\Robots\_Tools\Consolightrobotsinterface.exe" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="742e8792b498b646f7323119e0d0a384" Selector="&lt;wnd app='consolightrobotsinterface.exe' ctrlname='Form1' /&gt;">
+            <ui:OpenApplication.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,372" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'push button  Open'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[numeRobot]">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="74b9a115-1a16-4247-9ac4-4cf67de0a2cb" InformativeScreenshot="8f39e6fd757bc4c0ec30faac916c5302" Selector="&lt;wnd ctrlname='TextBoxInputRobotName' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'WindowsForms10.BUTTON.a...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1359c539-40ac-4cdd-843b-abf3aa225157" InformativeScreenshot="5562d877ac8b8c8fbf688e4a7b8fdb1a" Selector="&lt;wnd ctrlname='cmdSelecteaza' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </ActivityAction>
+            </ui:OpenApplication.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:OpenApplication>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExecutaMacroExcel" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ExecutaMacroExcel.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_caleAplicatie">[caleAplicatie]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_numeAplicatie">[numeAplicatie]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_rezultatExecutie">[rezultatExecutie]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_numeFisierExcel">[numeFisierIesire]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,490" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CloseApplication ContinueOnError="True" DisplayName="Close Application 'consolightrobotsinterfa...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
+            <ui:CloseApplication.Target>
+              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[myConsolightRobotsInterfaceWindow]" Id="f170f98c-bf1d-4609-ac4d-760ea15ef490" InformativeScreenshot="0146f21d6e483d180a336f4ab0a60f83" TimeoutMS="1000" WaitForReady="COMPLETE" />
+            </ui:CloseApplication.Target>
+          </ui:CloseApplication>
+          <ui:CloseApplication ContinueOnError="True" DisplayName="Close Application 'consolightrobotsinterfa...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_2">
+            <ui:CloseApplication.Target>
+              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[myConsolightRobotsInterfaceWindow]" Id="f170f98c-bf1d-4609-ac4d-760ea15ef490" InformativeScreenshot="0146f21d6e483d180a336f4ab0a60f83" TimeoutMS="1000" WaitForReady="COMPLETE" />
+            </ui:CloseApplication.Target>
+          </ui:CloseApplication>
+          <ui:CloseApplication ContinueOnError="True" DisplayName="Close Application 'consolightrobotsinterfa...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_3">
+            <ui:CloseApplication.Target>
+              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[myConsolightRobotsInterfaceWindow]" Id="f170f98c-bf1d-4609-ac4d-760ea15ef490" InformativeScreenshot="0146f21d6e483d180a336f4ab0a60f83" TimeoutMS="1000" WaitForReady="COMPLETE" />
+            </ui:CloseApplication.Target>
+          </ui:CloseApplication>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+  </Sequence>
+</Activity>

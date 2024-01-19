@@ -1,0 +1,427 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1419,3668" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.GSuite</x:String>
+      <x:String>UiPath.GSuite.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Microsoft.Activities.Extensions.Statements</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="41">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="616,3603" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="spreadsheetsDataTable" />
+      <Variable x:TypeArguments="sd:DataTable" Name="utilizatoriDataTable" />
+      <Variable x:TypeArguments="sd:DataTable" Name="masiniDataTable" />
+      <Variable x:TypeArguments="scg:IDictionary(x:Object, x:Object)" Name="dictUtilizatori" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listUtilizatori" />
+      <Variable x:TypeArguments="scg:IDictionary(x:Object, x:Object)" Name="dictMasini" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listMasini" />
+      <Variable x:TypeArguments="x:String" Name="caleAplicatie" />
+      <Variable x:TypeArguments="x:String" Name="numeAplicatie" />
+      <Variable x:TypeArguments="x:Boolean" Name="emailSend" />
+      <Variable x:TypeArguments="x:Boolean" Name="executaMacroExcel" />
+      <Variable x:TypeArguments="x:String" Name="rezultatExecutie" />
+      <Variable x:TypeArguments="x:String" Name="numeFisierIesire" />
+      <Variable x:TypeArguments="x:String" Name="dataRaportarii" />
+      <Variable x:TypeArguments="x:String" Name="tipRaport" />
+      <Variable x:TypeArguments="x:Boolean" Name="incarcaMasini" />
+      <Variable x:TypeArguments="x:String" Name="emailCC" />
+      <Variable x:TypeArguments="x:String" Name="emailBCC" />
+      <Variable x:TypeArguments="x:String" Name="emailTo" />
+      <Variable x:TypeArguments="x:String" Name="emailBody" />
+      <Variable x:TypeArguments="x:String" Name="emailSubiect" />
+      <Variable x:TypeArguments="x:Boolean" Name="incarcaUtilizatori" />
+      <Variable x:TypeArguments="x:Boolean" Name="emailSendOnlyToMe" />
+      <Variable x:TypeArguments="x:String" Name="emailMe" />
+      <Variable x:TypeArguments="x:String" Name="emailSendOnlyToMeCC" />
+      <Variable x:TypeArguments="x:String" Name="numeRobot" />
+      <Variable x:TypeArguments="x:String" Name="fisiereBI" />
+      <Variable x:TypeArguments="x:Boolean" Name="incarcaKmDinSpreadsheeturileGoogle" />
+      <Variable x:TypeArguments="x:Int32" Name="numarKmAcceptatiGratuitImplicit" />
+      <Variable x:TypeArguments="x:Boolean" Name="impartePeFiliale" />
+      <Variable x:TypeArguments="x:Boolean" Name="impartePeAgenti" />
+      <Variable x:TypeArguments="x:String" Name="idFiliala" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictFiliale" />
+      <Variable x:TypeArguments="sd:DataTable" Name="filialeDataTable" />
+      <Variable x:TypeArguments="sd:DataTable" Name="mySprDataTable" />
+      <Variable x:TypeArguments="sd:DataTable" Name="myDataTable" />
+      <Variable x:TypeArguments="x:String" Name="strDataInceput" />
+      <Variable x:TypeArguments="x:String" Name="strDataSfarsit" />
+      <Variable x:TypeArguments="x:String" Name="strDataFinala" />
+      <Variable x:TypeArguments="x:String" Name="msg" />
+      <Variable x:TypeArguments="s:DateTime" Name="dataInceput" />
+      <Variable x:TypeArguments="s:DateTime" Name="dataSfarsit" />
+      <Variable x:TypeArguments="s:DateTime" Name="dataFinala" />
+      <Variable x:TypeArguments="x:String" Name="parametri" />
+      <Variable x:TypeArguments="x:Int32" Name="limitaZiIntreLuni" />
+      <Variable x:TypeArguments="sd:DataRow" Name="myList" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="574,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[numeRobot]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">KmAuto</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[limitaZiIntreLuni]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">12</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializareVariabileSQLServer" sap:VirtualizedContainerService.HintSize="574,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="InitializareVariabileSQLServer.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_caleAplicatie">[caleAplicatie]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_numeAplicatie">[numeAplicatie]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_tipRaport">[tipRaport]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_executaMacroExcel">[cbool(executaMacroExcel)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailCC">[emailCC]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailBcc">[emailBCC]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailTo">[emailTo]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailBody">[emailBody]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailSubiect">[emailSubiect]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_extrageRapoarteExcelDinERP">[cbool(incarcaUtilizatori)]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_emailSend">[cbool(emailSend)]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_emailSendOnlyToMe">[cbool(emailSendOnlyToMe)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailMe">[emailMe]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_emailSendOnlyToMeCC">[emailSendOnlyToMeCC]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_dataRaportarii">[dataRaportarii]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_executaSQL">[cbool(incarcaMasini)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_fisiereBI">[fisiereBI]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_extrageRapoarteExcelDinBI">[cbool(incarcaKmDinSpreadsheeturileGoogle)]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_numeFisierOutput">[numeFisierIesire]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_numarLuniActualizate">[numarKmAcceptatiGratuitImplicit]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_impartePeFiliale">[cbool(impartePeFiliale)]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_impartePeAgenti">[cbool(impartePeAgenti)]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_numeRobot">[numeRobot]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Parametri">[parametri]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Foloseste campul FisiereBI pentru a stabili numarul de zile din luna curenta  dupa care se considera luna curenta si  nu luna anterioara pentru raportare" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="574,158" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[limitaZiIntreLuni]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">[cint(fisiereBI)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data nu poate fi decat prima zi a lunii anterioare sau a lunii curente (daca ziua este mai mare de limiteZileIntreLuni)" Code="Dim d As Date, v() As String&#xA;v=split(dataRaportarii, &quot;-&quot;)&#xA;d= dateserial(CInt(v(0)), CInt(v(1)), CInt(v(2)))&#xA;If CInt(v(2)) &gt;= limitaZiIntreLuni Then&#xA;&#x9;d = dateadd(&quot;m&quot;, 1,d)&#xA;End If&#xA;dataraportarii = dateandtime.year(d).ToString  + &quot;-&quot; + If(dateandtime.month(d)&lt;10, &quot;0&quot;, &quot;&quot;) +  dateandtime.month(d).ToString + &quot;-01&quot;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="574,222" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
+      <ui:InvokeCode.Arguments>
+        <InOutArgument x:TypeArguments="x:String" x:Key="dataRaportarii">[dataRaportarii]</InOutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="limitaZiIntreLuni">[limitaZiIntreLuni]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=Robots;User ID=sa;Password=P@ssword" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="574,89" sap2010:WorkflowViewState.IdRef="ExecuteQuery_10" ProviderName="System.Data.SqlClient" Sql="[&quot;UPDATE Config SET  Executed = 'Robotul a pornit.' Where NumeRobot ='&quot; + numeRobot  + &quot;'&quot;]">
+      <ui:ExecuteQuery.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:ExecuteQuery.Parameters>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExecuteQuery>
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Afla datele de inceput, sfarsit, final pe baza dataRaportarii, in format string (yyyy-MM-dd) si in format data si a dictZileLibere obtinut anterior&#xA;" Code="&#x9;&#x9;Dim ExecutaSQL As Func(Of SqlClient.SqlCommand, String, String) =&#xA;&#x9;&#x9;&#x9;Function(cmd As SqlClient.SqlCommand, Sql As String) As String&#xA;&#x9;&#x9;&#x9;&#x9;Try&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim ds As New DataSet&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;cmd.CommandText = Sql&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim oDataAdapter As New SqlClient.SqlDataAdapter(cmd)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;oDataAdapter.Fill(ds)&#xA;&#x9;&#x9;&#x9;&#x9;Catch ex As System.Exception&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Return &quot;Eroare: Sql = &quot; &amp; sql &amp; vbcrlf &amp; &quot;Msg: &quot; &amp; ex.Message&#xA;&#x9;&#x9;&#x9;&#x9;End Try&#xA;&#x9;&#x9;&#x9;&#x9;Return &quot;Ok&quot;&#xA;&#x9;&#x9;&#x9;End Function&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;Dim ReturDataTable As Func(Of SqlClient.SqlCommand, String, System.Data.DataTable) =&#xA;&#x9;&#x9;&#x9;Function(cmd As SqlClient.SqlCommand, Sql As String) As System.Data.DataTable&#xA;&#x9;&#x9;&#x9;&#x9;Try&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim ds As New DataSet&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;cmd.CommandText = Sql&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim oDataAdapter As New SqlClient.SqlDataAdapter(cmd)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;oDataAdapter.Fill(ds)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Return ds.Tables(0)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Exit Function&#xA;&#x9;&#x9;&#x9;&#x9;Catch ex As System.Exception&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;End Try&#xA;&#x9;&#x9;&#x9;&#x9;Return New System.Data.DataTable&#xA;&#x9;&#x9;&#x9;End Function&#x9;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;Dim ReturExecutaSql As Func(Of SqlClient.SqlCommand, String, Object) =&#xA;&#x9;&#x9;&#x9;Function(cmd As SqlClient.SqlCommand, Sql As String) As Object&#xA;&#x9;&#x9;&#x9;&#x9;Try&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim ds As New DataSet&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;cmd.CommandText = Sql&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Dim oDataAdapter As New SqlClient.SqlDataAdapter(cmd)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;oDataAdapter.Fill(ds)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Return ds.Tables(0).rows(0)(0)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Exit Function&#xA;&#x9;&#x9;&#x9;&#x9;Catch ex As System.Exception&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;End Try&#xA;&#x9;&#x9;&#x9;&#x9;Return Nothing &#xA;&#x9;&#x9;&#x9;End Function&#xA;&#xA;&#x9;&#x9;'primeste dataIn sub forma de string in mai multe formate si scoate data&#xA;&#x9;&#x9;Dim ReturStrDataFromMultipleDateFormats As Func(Of String, Date) =&#xA;&#x9;&#x9;&#x9;Function(dataIn As String) As Date&#xA;&#x9;&#x9;&#x9;&#x9;Dim v() As Object, vv() As Object, vvv() As Object, dataOut As Date&#xA;&#x9;&#x9;&#x9;&#x9;If dataIn.Contains(&quot;.&quot;) Then 'data sub forma de numar double&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateTime.FromOADate(CType(dataIn, Double))&#xA;&#x9;&#x9;&#x9;&#x9;ElseIf dataIn.Contains(&quot;/&quot;) Then 'data sub forma de 'MM/dd/yyyy HH:mm:ss&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;v = Split(dataIn, &quot; &quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;vv = Split(v(0).ToString, &quot;/&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;vvv = Split(v(1).ToString, &quot;:&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateSerial(CInt(vv(2)), CInt(vv(0)), CInt(vv(1)))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;h&quot;, CInt(vvv(0)), dataOut)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;n&quot;, CInt(vvv(1)), dataOut)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;s&quot;, CInt(vvv(2)), dataOut)&#xA;&#x9;&#x9;&#x9;&#x9;ElseIf dataIn.Contains(&quot;-&quot;) Then 'data sub forma de 'yyyy-MM-dd HH:mm:ss'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;v = Split(dataIn, &quot; &quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;vv = Split(v(0).ToString, &quot;-&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;vvv = Split(v(1).ToString, &quot;:&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateSerial(CInt(vv(0)), CInt(vv(1)), CInt(vv(2)))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;h&quot;, CInt(vvv(0)), dataOut)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;n&quot;, CInt(vvv(1)), dataOut)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dataOut = DateAdd(&quot;s&quot;, CInt(vvv(2)), dataOut)&#xA;&#x9;&#x9;&#x9;&#x9;End If&#xA;&#x9;&#x9;&#x9;&#x9;Return dataOut&#xA;&#x9;&#x9;&#x9;End Function&#xA;&#xA;&#x9;&#x9;'primeste dataIn sub forma de data si scoate string in format yyyy-MM-dd HH:mm:ss&#xA;&#x9;&#x9;Dim ReturDataFromStrDateFormat As Func(Of Date, String) =&#xA;&#x9;&#x9;&#x9;Function(dataIn As Date) As String&#xA;&#x9;&#x9;&#x9;&#x9;Dim dataOut As String = dataIn.ToString(&quot;yyyy-MM-dd&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;Return dataOut&#xA;&#x9;&#x9;&#x9;End Function&#xA;&#xA;&#x9;&#x9;Dim kmAutoConnectionString As String = &quot;Data Source=10.0.0.10;Initial Catalog=KmAuto;Persist Security Info=True;User ID=sa;Password=P@ssword&quot;&#xA;&#x9;&#x9;Dim kmAutoSqlCon As New SqlClient.SqlConnection&#xA;&#x9;&#x9;Dim kmAutoCmd As New SqlClient.SqlCommand&#xA;&#xA;&#x9;&#x9;kmAutoSqlCon.ConnectionString = kmAutoConnectionString&#xA;&#x9;&#x9;kmAutoSqlCon.Open()&#xA;&#x9;&#x9;kmAutoCmd.Connection = kmAutoSqlCon&#xA;&#x9;&#x9;kmAutoCmd.CommandTimeout = 20000&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;dataInceput = CType(ReturExecutaSql(kmAutoCmd, &quot;Select Top(1) DataInceput from Intervale Where DataRaportarii = '&quot; &amp; strDataRaportarii &amp; &quot;' Order By DataInceput&quot;), Date)&#xA;        strDataInceput = ReturDataFromStrDateFormat(dataInceput)&#xA;        dataSfarsit = CType(ReturExecutaSql(kmAutoCmd, &quot;Select Top(1) DataSfarsit from Intervale Where DataRaportarii = '&quot; &amp; strDataRaportarii &amp; &quot;' Order By DataSfarsit desc&quot;), Date)&#xA;        strDataSfarsit = ReturDataFromStrDateFormat(dataSfarsit)&#xA;        dataFinala  = DateAdd(&quot;d&quot;, 3, dataSfarsit) 'adauga 3 zile la data de sfarsit pentru a afla data Finala&#xA;        strDataFinala = ReturDataFromStrDateFormat(dataFinala)&#xA;&#xA;&#x9;&#x9;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="574,237" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="strDataRaportarii">[dataRaportarii]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="strDataInceput">[strDataInceput]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="strDataSfarsit">[strDataSfarsit]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="strDataFinala">[strDataFinala]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="dataInceput">[dataInceput]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="dataSfarsit">[dataSfarsit]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="dataFinala">[dataFinala]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="limitaZiIntreLuni">[limitaZiIntreLuni]</InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <Sequence sap:VirtualizedContainerService.HintSize="574,2011" sap2010:WorkflowViewState.IdRef="Sequence_12">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="pregateste sirul parametri pentru interogare (Scoate virgula si spatiul de la final si pune apostroafe in jurul fiecarui item)&#xA;(am folosit parametri pentru a stabili foile google din care se citesc km introdusi de utiliztori)" Code="Dim v() As String = split(parametri, &quot;, &quot;)&#xA;Dim k As Integer, s As String &#xA;For k = 0 To ubound (v)-1&#xA;&#x9;s &amp;= &quot;'&quot; &amp; v(k) &amp; &quot;'&quot; &amp; If(k = ubound(v)-1, &quot;&quot;, &quot;, &quot;)&#xA;&#x9;&#xA;Next k&#xA;parametri = s" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="512,252" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
+        <ui:InvokeCode.Arguments>
+          <InOutArgument x:TypeArguments="x:String" x:Key="parametri">[parametri]</InOutArgument>
+        </ui:InvokeCode.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeCode>
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Aduce in spreadsheetsDataTable continutul tabelului Spreadsheets din baza de date SQL KmAuto" CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=kmAuto;Persist Security Info=True;User ID=sa;Password=P@ssword" DataTable="[spreadsheetsDataTable]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="512,131" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.SqlClient" Sql="[&quot;Select * from Spreadsheets Where &quot;+if(parametri.Length&gt;0, &quot;Nume IN(&quot;+parametri+&quot;) AND &quot; ,&quot;&quot;)+&quot;Activ = 'Da' AND Foaie &lt;&gt; N'' AND SheetId &lt;&gt; N''&quot;]">
+        <ui:ExecuteQuery.Parameters>
+          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        </ui:ExecuteQuery.Parameters>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ExecuteQuery>
+      <If Condition="[incarcaKmDinSpreadsheeturileGoogle = True]" sap:VirtualizedContainerService.HintSize="512,1437" sap2010:WorkflowViewState.IdRef="If_2">
+        <If.Then>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,1248" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Sterge tabela KmLog " CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=kmAuto;Persist Security Info=True;User ID=sa;Password=P@ssword" DataTable="[mySprDataTable]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_16" ProviderName="System.Data.SqlClient" Sql="Delete from kmLog">
+              <ui:ExecuteQuery.Parameters>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:ExecuteQuery.Parameters>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExecuteQuery>
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Sterge tabela Utilizatori inexistenti" CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=kmAuto;Persist Security Info=True;User ID=sa;Password=P@ssword" DataTable="[mySprDataTable]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_21" ProviderName="System.Data.SqlClient" Sql="Delete from UtilizatoriInexistenti">
+              <ui:ExecuteQuery.Parameters>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:ExecuteQuery.Parameters>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExecuteQuery>
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Sterge tabela MasiniInexistente " CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=kmAuto;Persist Security Info=True;User ID=sa;Password=P@ssword" DataTable="[mySprDataTable]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_22" ProviderName="System.Data.SqlClient" Sql="Delete from MasiniInexistente">
+              <ui:ExecuteQuery.Parameters>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:ExecuteQuery.Parameters>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExecuteQuery>
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Sterge tabela KmLog " CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=kmAuto;Persist Security Info=True;User ID=sa;Password=P@ssword" DataTable="[mySprDataTable]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_20" ProviderName="System.Data.SqlClient" Sql="Select * from Spreadsheets Where Activ = 'Da' and Foaie = 'Form Responses 1' and SheetId &lt;&gt; N''">
+              <ui:ExecuteQuery.Parameters>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:ExecuteQuery.Parameters>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExecuteQuery>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Ia pe rand spreadsheeturile cu km in care au introdus utilizatorii (in Google)" DataTable="[spreadsheetsDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="434,360" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="spreadsheet" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,201" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="358,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="IncarcaKmLog.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dataInceput">[dataInceput]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_spreadsheetId">[spreadsheet("SpreadsheetId").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_spreadsheetName">[spreadsheet("Nume").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_dataRaportarii">[dataRaportarii]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEachRow>
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Scrie steagul de terminare executie robot" CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=Robots;User ID=sa;Password=P@ssword" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="434,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_14" ProviderName="System.Data.SqlClient" Sql="[&quot;UPDATE Config SET  Executed = 'Incarcat foile cu km cu succes. Transfer control catre Excel-VBA.' Where NumeRobot ='&quot; + numeRobot  + &quot;'&quot;]">
+              <ui:ExecuteQuery.Parameters>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:ExecuteQuery.Parameters>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExecuteQuery>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExecutaMacroExcel" sap:VirtualizedContainerService.HintSize="574,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ExecutaMacroExcel.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_caleAplicatie">[caleAplicatie]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_numeAplicatie">[numeAplicatie]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_rezultatExecutie">[rezultatExecutie]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_numeFisierExcel">[numeFisierIesire]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Scrie steagul de terminare executie robot" CommandType="Text" ConnectionString="Data Source=10.0.0.10;Initial Catalog=Robots;User ID=sa;Password=P@ssword" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="574,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_9" ProviderName="System.Data.SqlClient" Sql="[&quot;UPDATE Config SET  Executed = 'Executie cu succes' Where NumeRobot ='&quot; + numeRobot  + &quot;'&quot;]">
+      <ui:ExecuteQuery.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:ExecuteQuery.Parameters>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExecuteQuery>
+  </Sequence>
+</Activity>

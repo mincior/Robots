@@ -1,0 +1,20 @@
+Buna ziua
+Ma numesc Mincior Vicentiu, lucrez in departamentul IT si ma ocup de aplicatia KmAuto care gestioneaza utilizarea masinilor Consolight de catre angajati, in interes personal in perioadele de weekend..
+Va anunt prin acest email ca ati fost introdus in aplicatie, urmand ca la fiecare inceput/sfarsit de weekend, plecare/sosire din concediu sa faceti cate o poza la kilometrajul din bord si sa le introduceti in program.
+Pentru a putea introduce date aveti nevoie de un telefon smart care sa detina un cont google (personal) si pe care sa accesati link-ul https://auto.consolight.ro/
+Acolo veti selecta butonul ‘Bucuresti TESA’ si veti gasi un formular cu descrieri amanuntite la fiecare camp, pe care va rog sa le cititi. 
+Masina alocata este B-178-CLT si numele 
+
+Ma puteti contacta la tel. 0742134762 pentru a va ajuta sa introduceti prima data.
+
+De retinut cateva reguli simple:
+In fiecare vineri se introduce la plecarea de la serviciu o inregistrare(cu poza aferenta) si kilometrajul respectiv care va avea INTOTDEAUNA status ‘Referinta’
+In fiecare luni la ajungerea la serviciu se va introduce o inregistrare cu status corespunzator utilizarii masinii. De obicei status-ul este ‘Normal’ si inseamna ca veti fi pus la plata pentru kilometrii parcursi.
+(Se stie consumul mediu al masinii – dat de fabricant), se face un calcul la numarul de km parcursi si se calculeaza suma de plata pentru fiecare weekend. Tot pentru fiecare weekend exista o limita de km (de obicei, 20) ce se acorda gratuit).
+Daca in acel weekend aveti deplasari in interes de serviciu, la fiecare plecare de acasa faceti o poza si o introduceti cu status Normal si la fiecare intoarcere faceti o poza cu status ‘Interes de serviciu’. Aceste inregistrari sunt intercalate cu cele doua obligatorii de mai sus.
+Nu este necesar sa se introduca in aplicatie inregistrarile atunci cand se fac pozele. In formularul de introducere, la final este un camp de tip ‘data/ora’ care se va completa NUMAI CAND faceti poza astazi si introduceti in aplicatie in alta zi. 
+Este indicat sa faceti poza cu telefonul inafara aplicatiei pentru a o putea salva in telefon si a o retransmite daca este necesar. Daca faceti poza din aplicatie si o transmiteti este posibil sa nu ajunga pe serverul google din diverse motive, dar nici in telefon nu o mai aveti pentru a dovedi ca ati/n-ati mers cu masina.
+In campul Observatii scrieti informatii care ar putea ajuta, cum ar fi ‘Masina este in service’, ‘Am uitat sa fac poza’ , etc. 
+Cand plecati/veniti in/din concediu aveti status Plecare in concediu/Sosire din concediu (card firma). Pentru situatii speciale cand incarcati combustibil din resurse proprii trebuie sa folositi (cu acordul responsabilului auto -dl. Petrica Ilie) metoda ‘plin la plin’ – adica incarcati rezevorul de pe cardul firmei si cand aduceti masina inapoi o aduceti cu rezervorul plin. In acest caz aveti status ‘Intoarcere din concediu (card personal)
+
+Cu respect, Mincior V.

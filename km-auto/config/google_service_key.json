@@ -1,0 +1,12 @@
+{
+	"type": "service_account",
+	"project_id": "kmauto",
+	"private_key_id": "7042a20bc77600cc5929deee214319f30b8ed46d",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC7p1OFVgp4zRhI\nxdf/TiCkx+w/8H3wCuplM8lUejOM5YaaqWdxE0nhk3ByZ8O7kymmZlynpGVREo4B\n1QGZtjj1He4g+GP9nJiOt9y1oSsOyfPHefYORHrMN4syJ523KsJAG4HLTxW54yvH\nATs4W/Xe15Oa1lGHt3SY7qJy0S1c0vefhXYKOsfBWTCYkZ8jyy8d2QLY5WZIdBbu\nKnPovzrrETQLKVKOHP0xeBpo/J85ZxMtUirJQjt1D1NJ3w7MQMr9IPymXVvcZzJJ\nHHEjF4hxcH08K50XAfDxnpUVHMYrhTpLSekzwcd8Jy+mTQOQ+vy+EVi89EcGwOma\noZMh2y5BAgMBAAECggEADypUleSa9+HNWgjr2J/HWWx9zjoLl37DrCudVE+EQy6u\ngZPPaWREwYShSbb96swXyYaha3vzTd7Dwr1PQeKn45QIZro5lylUwUigfz5CmlFI\nZgvYI+rgCLPeyDjK5nQVGvS4zoXk7IRXM/VIbwOBkUGXVc6xwUKFMLHXx5MvnmjG\niuFYdmv7qaHRrvn7+5eT5KHsmsTeNeqLnEWwqEs3knvTBC7DCL07BMGe0adCYnNk\ngjZrdYGNaMPIpyr004fKhYOWB/leeu2cA+MxLXWSBMtuSGEaXiuOrqbr3lcdxDjf\nOIDWVoQ7K4dDoS9XZEt+bdHUb7a+If5O3Yx6VT4WlQKBgQDiGYNt2l7nmT6uOaiJ\nUnxKTnKtsJW+TSoX7cV6rvGFkB9NtsWQeZq8C2XLXiubyxVIPmXPG7U990lU7wsU\ngIJVOHQqN0jucWCOgaKlK4wYPdjOKzEdAekaliFUTpm2HtaKzQLX6PavpGUGXbX+\n61iBbHl51gsATRWiLpw1mEMbRQKBgQDUeD31VOPLW/KBVVgep7WW32IVd6M3Ldzi\nMN0OXWl8MJ71Jdu1w0cf9KFwnAWUVftS+lmMuJEClVTKOWpe+jfRS49AS6OnKuPC\n1I1ltTe5UGgIyNIOd4SS/CgKzzBSIn2c0m/3XRvZ5s9N/fmOeXhxqSvIQVEAaUaC\nHG7/jF54zQKBgCyYF6INFfbb9M7sNF+RU05clqXHVGGKWqkJjo+Z/az4NhRf3iuW\nsHwyS0uHMVazAWmUVQQ6VM75/Q6xbyAGEK66Sb8h1FKjLgYtb2TgZ+tIF4DiZ/du\nrwk9Xyl/rzWKc4pA0TTAkBcod3x/8ytqQ7STLopnOxg+G+w3ATxY4bN5AoGAHus0\nkPv+fjxuKNYDkcp0CXWOb3NOhBwfdacItCtxy0nECAavV18IfaT6zUlXIoP0o9mc\nqHa/W3Hhud/rE9EzyDhHq2KWeSArrtGBlhht+ICz8vtOXh6UY1NgfFo0PO+Z+fVB\np+ybvfTxm/bmlw4kMd4dafHfWMD5Krv6hyOlJ80CgYBOB/hXbwhcooND2C99+aBU\nNzzPnO/XEdAMUPZQMTqAASkUCXYzyfTv63lyKqOCj9iHfIqNi9lKEHk9opJo3Jsm\nY28nG74KyWGqvKK4hf7gbPjl7cYdY7oWTfYguqI/V4O4xMZyPUdoZ49ZNckM52Rj\n4GUWhbUbBrqrwu9pO2Sm6A==\n-----END PRIVATE KEY-----\n",
+	"client_email": "kmauto@kmauto.iam.gserviceaccount.com",
+	"client_id": "100781464922879268914",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kmauto%40kmauto.iam.gserviceaccount.com"
+  }

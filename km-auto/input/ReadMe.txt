@@ -1,0 +1,1 @@
+Fisierele bazei de date sunt in \\10.0.0.10\G:\SeniorERP\Databases

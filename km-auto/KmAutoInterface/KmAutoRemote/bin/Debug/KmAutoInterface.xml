@@ -1,0 +1,596 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+KmAutoInterface
+</name>
+</assembly>
+<members>
+<member name="T:KmAutoInterface.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:KmAutoInterface.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:KmAutoInterface.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.CombustibiliDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.FilialeInexistenteDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.KmLogDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.MasiniInexistenteDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.SpreadsheetsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.UtilizatoriDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.UtilizatoriInexistentiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.ZileLibereDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.FilialeDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.MasiniDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.GreseliDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.GreseliLogDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.CombustibiliRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.FilialeInexistenteRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.KmLogRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.MasiniInexistenteRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.SpreadsheetsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.UtilizatoriRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.UtilizatoriInexistentiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.ZileLibereRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.FilialeRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.MasiniRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.GreseliRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.GreseliLogRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.CombustibiliRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.FilialeInexistenteRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.KmLogRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.MasiniInexistenteRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.SpreadsheetsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.UtilizatoriRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.UtilizatoriInexistentiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.ZileLibereRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.FilialeRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.MasiniRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.GreseliRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSet.GreseliLogRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.CombustibiliTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.FilialeInexistenteTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.KmLogTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.MasiniInexistenteTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.SpreadsheetsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.UtilizatoriTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.UtilizatoriInexistentiTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.ZileLibereTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.FilialeTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.MasiniTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.GreseliTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.GreseliLogTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(KmAutoInterface.KmAutoDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(KmAutoInterface.KmAutoDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(KmAutoInterface.KmAutoDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager.UpdateAll(KmAutoInterface.KmAutoDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:KmAutoInterface.KmAutoDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Agenti_vanzari_parteneriDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Asignare_producator_achizitorDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.CampuriConfigDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.ConfigDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.EmailsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_agentiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_filialeDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Scadentar_emails_agentiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Scadentar_emails_filialeDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.SetariFortateRobotiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Solduri_clienti_parteneri_filiale_agentiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Agenti_vanzari_parteneriRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Asignare_producator_achizitorRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.CampuriConfigRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.ConfigRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.EmailsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_agentiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_filialeRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Scadentar_emails_agentiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Scadentar_emails_filialeRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.SetariFortateRobotiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Solduri_clienti_parteneri_filiale_agentiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Agenti_vanzari_parteneriRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Asignare_producator_achizitorRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.CampuriConfigRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.ConfigRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.EmailsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_agentiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Emails_filialeRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Scadentar_emails_agentiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Scadentar_emails_filialeRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.SetariFortateRobotiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSet.Solduri_clienti_parteneri_filiale_agentiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Agenti_vanzari_parteneriTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Asignare_producator_achizitorTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.CampuriConfigTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.ConfigTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.EmailsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Emails_TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Emails_agentiTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Emails_filialeTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Scadentar_emails_agentiTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Scadentar_emails_filialeTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.SetariFortateRobotiTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.Solduri_clienti_parteneri_filiale_agentiTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(KmAutoInterface.RobotsDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(KmAutoInterface.RobotsDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(KmAutoInterface.RobotsDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager.UpdateAll(KmAutoInterface.RobotsDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:KmAutoInterface.RobotsDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+</members>
+</doc>
